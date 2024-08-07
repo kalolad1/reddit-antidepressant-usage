@@ -1,49 +1,62 @@
-import praw
 import datetime
 
+import praw
+
+import drugs
+
+CLIENT_ID = "2PNKUUZ7U8J435ZZF_f19g"
+CLIENT_SECRET = "lwnfx-95lv-kQpj39vioHC_Al9_pUw"
+USER_AGENT = "test_user_agent"
+
+
 class RedditPostCollector:
-    def __init__(self, client_id, client_secret, user_agent):
+    def __init__(
+        self, client_id=CLIENT_ID, client_secret=CLIENT_SECRET, user_agent=USER_AGENT
+    ):
         self.reddit = praw.Reddit(
-            client_id=client_id,
-            client_secret=client_secret,
-            user_agent=user_agent
+            client_id=client_id, client_secret=client_secret, user_agent=user_agent
         )
 
-    def collect_posts(self, subreddits, days):
+    def collect_posts(
+        self,
+        subreddits,
+        subreddit_post_limit,
+        days,
+        keywords
+    ):
         end_time = datetime.datetime.now(datetime.UTC)
         start_time = end_time - datetime.timedelta(days=days)
-        
+
         collected_posts = []
-        
+
         for subreddit in subreddits:
-            for submission in self.reddit.subreddit(subreddit).new(limit=None):
-                post_time = datetime.datetime.fromtimestamp(
-                    submission.created_utc,
-                    datetime.UTC)
-                if start_time <= post_time <= end_time:
-                    collected_posts.append({
-                        'title': submission.title,
-                        'author': submission.author.name if submission.author else 'N/A',
-                        'score': submission.score,
-                        'subreddit': submission.subreddit.display_name,
-                        'created_utc': post_time,
-                        'url': submission.url,
-                        'num_comments': submission.num_comments,
-                        'selftext': submission.selftext
-                    })
-        
+            for keyword in keywords:
+                for submission in self.reddit.subreddit(subreddit).search(
+                    keyword,
+                    limit=subreddit_post_limit
+                ):
+                    post_time = datetime.datetime.fromtimestamp(
+                        submission.created_utc, datetime.UTC
+                    )
+                    if start_time <= post_time <= end_time:
+                        collected_posts.append(
+                            {"title": submission.title, "selftext": submission.selftext}
+                        )
+                        # print(collected_posts[-1])
+
         return collected_posts
 
 
 if __name__ == "__main__":
-    client_id = "2PNKUUZ7U8J435ZZF_f19g"
-    client_secret = "lwnfx-95lv-kQpj39vioHC_Al9_pUw"
-    user_agent = 'test_user_agent'
+    collector = RedditPostCollector()
+    SUBREDDITS = ["mentalhealth", "depression"]
+    DAYS = 1000
+    SUBREDDIT_POST_LIMIT = 2
+    KEYWORDS = drugs.get_antidepressant_search_keywords()
 
-    collector = RedditPostCollector(client_id, client_secret, user_agent)
-    subreddits = ['sebderm']
-    days = 1  # Collect posts from the last 7 days
-
-    posts = collector.collect_posts(subreddits, days)
-    for post in posts:
-        print(post)
+    posts = collector.collect_posts(
+        SUBREDDITS,
+        SUBREDDIT_POST_LIMIT,
+        DAYS,
+        KEYWORDS
+    )
