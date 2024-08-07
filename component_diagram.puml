@@ -1,0 +1,61 @@
+@startuml Online Drug Surveillance Component Diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons/master
+!include osaPuml/Common.puml
+!include osaPuml/User/all.puml
+
+LAYOUT_LANDSCAPE()
+
+AddPersonTag("aggregated_users", $sprite="osa_user_large_group", $legendText="aggregated user")
+
+Boundary(users, "Users") {
+    Person(researchers, "Researchers", $tags="aggregated_users")
+    Person(pharmaceutical_companies, "Pharmaceutical Companies", $tags="aggregated_users")
+}
+
+System_Boundary(online_drug_surveillance, "Online Drug Surveillance") {
+    Boundary(backend, "Backend") {
+        Container(post_collector, "Post Collector")
+        Container(post_filterer, "Post Filterer")
+        ContainerDb(psql_database, "Postgres Database")
+        Container(post_analyzer, "Post Analyzer")
+        Container(sentiment_analyzer, "Sentiment Analyzer")
+        Container(report_generator, "Report Generator")
+    }
+    
+    Boundary(frontend, "Frontend") {
+        Container(web_ui, "Web UI")
+        Container(mobile_ui, "Mobile UI")
+    }
+}
+
+Boundary(sentiment_analysis_api, "Sentiment Analysis API") {
+    Container(chat_gpt_4o, "Chat GPT-4o")
+    Container(llama, "Llama")
+    Container(claude, "Claude")
+    Container(sentiment_specific, "Sentiment Specific")
+}
+
+Boundary(internet_data_sources, "Internet Data Sources") {
+    Component(reddit, "Reddit")
+    Component(twitter, "Twitter")
+    Component(mental_health_forum, "Mental Health Forum")
+}
+
+Rel(users, online_drug_surveillance, "Uses")
+Rel(post_collector, internet_data_sources, "Chron job polling")
+
+Rel(frontend, report_generator, "Gets reports")
+Rel(sentiment_analyzer, sentiment_analysis_api, "Requests sentiment score for post")
+
+Rel(post_collector, post_filterer, "Sends discovered posts")
+Rel(post_filterer, psql_database, "Stores filtered posts")
+Rel(post_analyzer, psql_database, "Fetches posts")
+Rel(post_analyzer, sentiment_analyzer, "Requests sentiment score for post") 
+Rel(report_generator, post_analyzer, "Requests recent analyzed posts")
+
+SHOW_LEGEND()
+@enduml
