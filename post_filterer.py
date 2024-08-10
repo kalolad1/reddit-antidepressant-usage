@@ -1,3 +1,4 @@
+import csv
 import json
 import os
 
@@ -10,6 +11,7 @@ import post_collector
 client = openai.OpenAI(
     api_key="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",
 )
+
 
 def filter_posts(posts):
     filtered_posts = []
@@ -32,11 +34,22 @@ def filter_posts(posts):
             filtered_posts.append(post)
     return filtered_posts
 
+
 def write_posts_to_csv_file(posts):
-    with open("filtered_posts.csv", "w") as file:
-        file.write("title,selftext\n")
-        for post in posts:
-            file.write(f"{post['title']},{post['selftext']}\n")
+    with open("filtered_posts.csv", "w", newline="") as file:
+        fieldnames = ["title", "selftext", "post_id"]
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+        writer.writeheader()
+        for post_id, post in enumerate(posts):
+            writer.writerow(
+                {
+                    "title": post["title"],
+                    "selftext": post["selftext"],
+                    "post_id": post_id,
+                }
+            )
+
 
 def main():
     collector = post_collector.RedditPostCollector()
