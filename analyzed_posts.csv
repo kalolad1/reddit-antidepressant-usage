@@ -1,19 +1,19 @@
-post_id,sentiment,adverse_effects,duration_of_treatment,drug,dose,age
-0,positive,['brutal side effects'],almost 2 weeks,citalopram,,0
-1,negative,['insomnia', 'extreme tiredness', 'dizziness', 'feeling extremely hot', 'weakness', 'sweating', 'shaking'],more than a week,Citalopram,10mg,0
-2,negative,['nausea', 'loose stools'],1 day,Celexa,20mg,0
-3,negative,['fatigue', 'excessive sleepiness'],1 year,Citalopram/Celexa,not specified,23
-4,negative,['Feeling poorly after social drinking'],Not specified,Escitalopram,Not specified,0
-5,negative,['brain zaps', 'dizziness', 'irritability', 'random crying spells'],2 years,Lexapro,10mg,0
-6,negative,['nauseous'],1 day,lexapro,10mg,0
-7,neutral,['side effects'],recently started,cipralex,not specified,0
-8,neutral,['Tiredness'],5 weeks,Cipralex (Escitalopram),10 mg,0
-9,negative,['worsening depression'],Not specified,Citalopram,10 mg,0
-10,negative,['excessive sleepiness', 'difficulty waking up', 'persistent tiredness'],2 months,Citalopram,,0
-11,negative,[],Years,Celexa,,0
-12,negative,['low sex drive', 'ED'],5 years off antidepressants,cipramil,,0
-13,neutral,[],,Escitalopram,,0
-14,negative,['Emotional numbness', 'Difficulty reacting to sad events'],10 years,Lexapro,10 MG,73
-15,positive,[],Not specified,Lexapro,Not specified,0
-16,negative,['nausea', 'numbness', 'weight gain', 'emotionless state', 'lack of empathy', 'inability to feel emotions'],2 months,escitalopram (cipralex),Not specified,25
-17,negative,['shortage of breath', 'possible allergic reaction'],few weeks,Cipralex (Escitalopram),20mg,0
+post_id,sentiment,duration_of_treatment,drug,dose,age
+0,positive,2 weeks,citalopram,,0
+1,negative,more than a week,citalopram,10mg,0
+2,negative,one day,citalopram,20mg,0
+3,negative,1 year,citalopram,unknown,23
+4,negative,not specified,escitalopram,not specified,0
+5,negative,2 years,escitalopram,10mg,0
+6,negative,1 day,escitalopram,10mg,0
+7,neutral,,escitalopram,,0
+8,neutral,5 weeks,escitalopram,10 mg,0
+9,negative,not specified,citalopram,10 mg,0
+10,negative,2 months,citalopram,,0
+11,negative,years,fluoxetine,,0
+12,negative,5 years,citalopram,,0
+13,neutral,,escitalopram,,0
+14,negative,10 years,escitalopram,10 mg,73
+15,positive,1 week,escitalopram,,0
+16,negative,2 months,escitalopram,,25
+17,negative,few weeks,escitalopram,20mg,0

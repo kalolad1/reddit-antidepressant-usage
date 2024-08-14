@@ -17,7 +17,7 @@ with warnings.catch_warnings():
 
 
 class PostCharactersticsExtraction(pydantic.BaseModel):
-    adverse_effects: list[str]
+    # adverse_effects: list[str]
     duration_of_treatment: str
     drug: str
     dose: str
@@ -36,7 +36,7 @@ def get_post_characteristics(post):
         messages=[
             {
                 "role": "system",
-                "content": "You are an expert at structured data extraction. You will be given unstructured text from a reddit post about someones experience with antidepressants and should extract the following characteristics and convert it into the given structure.",
+                "content": "You are an expert at structured data extraction. You will be given unstructured text from a reddit post about someones experience with antidepressants and should extract the following characteristics and convert it into the given structure. Use only lowercase. For the drug, provide only a single generic name. If a brand name drug is present convert it to its corresponding generic name.",
             },
             {"role": "user", "content": f"Title: {post["title"]} Body: {post["selftext"]}"},
         ],
@@ -63,18 +63,18 @@ def analyze_posts(posts):
 
 def write_analyzed_posts_to_csv_file(analyzed_posts):
     with open("analyzed_posts.csv", "w") as file:
-        file.write("post_id,sentiment,adverse_effects,duration_of_treatment,drug,dose,age\n")
+        file.write("post_id,sentiment,duration_of_treatment,drug,dose,age\n")
         for post in analyzed_posts:
             post_id = post["post_id"]
             sentiment = post["sentiment"]
-            adverse_effects = post["adverse_effects"]
+            # adverse_effects = post["adverse_effects"]
             duration_of_treatment = post["duration_of_treatment"]
             drug = post["drug"]
             dose = post["dose"]
             age = post["age"]
 
-            file.write(f"{post_id},{sentiment},{adverse_effects},{duration_of_treatment},{drug},{dose},{age}\n")
-            
+            file.write(f"{post_id},{sentiment},{duration_of_treatment},{drug},{dose},{age}\n")
+
 
 
 def read_posts_from_csv_file(file_path):
