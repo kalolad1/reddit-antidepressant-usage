@@ -1,4 +1,5 @@
 import enum
+from typing import List
 
 class AntidepressantClass(enum.Enum):
     SSRI = 1
@@ -18,16 +19,16 @@ class Drug:
 
     def __init__(
         self,
-        generic_name,
-        brand_names,
-        drug_class,
-    ):
+        generic_name: str,
+        brand_names: List[str],
+        drug_class: AntidepressantClass,
+    ) -> None:
         self.generic_name = generic_name
         self.brand_names = brand_names
         self.drug_class = drug_class
 
 
-def create_list_of_antidepressants():
+def create_list_of_antidepressants() -> List[Drug]:
     antidepressants = [
         Drug("citalopram", ["celexa", "cipramil"], AntidepressantClass.SSRI),
         Drug(
@@ -150,7 +151,7 @@ def create_list_of_antidepressants():
     return antidepressants
 
 
-def create_search_keywords_from_drugs(drugs):
+def create_search_keywords_from_drugs(drugs: List[Drug]) -> List[str]:
     keywords = []
     for drug in drugs:
         keywords.append(drug.generic_name)
@@ -158,7 +159,7 @@ def create_search_keywords_from_drugs(drugs):
     return keywords
 
 
-def get_antidepressant_search_keywords():
+def get_antidepressant_search_keywords() -> List[str]:
     drugs = create_list_of_antidepressants()
     keywords = create_search_keywords_from_drugs(drugs)
     return keywords

@@ -19,3 +19,13 @@ repos:
     hooks:
     -   id: python-use-type-annotations
     -   id: python-check-blanket-type-ignore
+
+
+- repo: local
+  hooks:
+    - id: mypy
+      name: mypy
+      entry: mypy
+      require_serial: true
+      language: system
+      types: [ python ]
