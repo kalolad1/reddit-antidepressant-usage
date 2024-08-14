@@ -1,19 +1,22 @@
+from typing import Any
+
 import pandas as pd
 
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt  # type: ignore[import-not-found]
 
 DATA_FILE_PATH = "analyzed_posts.csv"
 
 
-def read_posts_from_csv_file(file_path):
+def read_posts_from_csv_file(file_path: str) -> pd.DataFrame:
     return pd.read_csv(file_path)
 
-def create_sentiment_analysis_comparative_bar_graph(data):
+
+def create_sentiment_analysis_comparative_bar_graph(data: pd.DataFrame) -> None:
     # Group the data by drug and sentiment
     grouped_data = data.groupby(["drug", "sentiment"]).size().unstack()
 
     # Calculate the relative percentage of each sentiment for each drug
-    grouped_data["total"] = grouped_data.sum(axis=1)
+    grouped_data["total"] = grouped_data.sum(axis=1)  # type: ignore[call-overload]
     grouped_data["positive_percentage"] = (
         grouped_data["positive"] / grouped_data["total"] * 100
     )
@@ -25,13 +28,13 @@ def create_sentiment_analysis_comparative_bar_graph(data):
     )
 
     # Sort the data by most positive to least positive
-    sorted_data = grouped_data.sort_values(by="positive_percentage", ascending=False)
+    sorted_data = grouped_data.sort_values(by="positive_percentage", ascending=False)  # type: ignore[call-overload]
 
     # Create the graph
     plt.figure(figsize=(10, 6))
-    sorted_data[["negative_percentage", "neutral_percentage", "positive_percentage"]].plot(
-        kind="bar", stacked=True
-    )
+    sorted_data[
+        ["negative_percentage", "neutral_percentage", "positive_percentage"]
+    ].plot(kind="bar", stacked=True)
     plt.xlabel("Drug")
     plt.ylabel("Percentage")
     plt.title("Sentiment Analysis by Drug")
@@ -39,15 +42,19 @@ def create_sentiment_analysis_comparative_bar_graph(data):
     plt.show()
 
 
-def create_post_stats_table(data):
+def create_post_stats_table(data: pd.DataFrame) -> Any:
     grouped_data = data.groupby(["drug", "sentiment"]).size().unstack()
     grouped_data["total"] = grouped_data.sum(axis=1)
     print(grouped_data)
 
-
     fig, ax = plt.subplots()
     ax.axis("off")
-    ax.table(cellText=grouped_data.values, colLabels=grouped_data.columns, rowLabels=grouped_data.index, loc="center")
+    ax.table(
+        cellText=grouped_data.values,
+        colLabels=grouped_data.columns,
+        rowLabels=grouped_data.index,
+        loc="center",
+    )
     plt.show()
 
     return grouped_data

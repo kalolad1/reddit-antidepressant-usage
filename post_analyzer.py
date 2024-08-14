@@ -1,14 +1,14 @@
 import csv
 import warnings
+from typing import Any, Dict, List
 
-
-import dotenv
+import dotenv # type: ignore[import-not-found]
 import openai
 import pydantic
-import transformers
+import transformers # type: ignore[import-not-found]
 
 dotenv.load_dotenv()
-client = openai.OpenAI(
+client = openai.OpenAI( # type: ignore[attr-defined]
     api_key="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",
 )
 with warnings.catch_warnings():
@@ -25,12 +25,12 @@ class PostCharactersticsExtraction(pydantic.BaseModel):
     gender: str
 
 
-def get_sentiment_score(post):
+def get_sentiment_score(post: Dict[str, str]) -> str:
     sentiment = sentiment_analysis_classifier(post["title"] + " " + post["selftext"])
-    return sentiment[0]["label"]
+    return str(sentiment[0]["label"])
 
 
-def get_post_characteristics(post):
+def get_post_characteristics(post: Dict[str, str]) -> Any:
     completion = client.beta.chat.completions.parse(
         model="gpt-4o-mini",
         messages=[
@@ -46,13 +46,13 @@ def get_post_characteristics(post):
     post_characteristics = completion.choices[0].message.parsed
     return vars(post_characteristics)
 
-def analyze_post(post):
+def analyze_post(post: Dict[str, str]) -> Any:
     sentiment = get_sentiment_score(post)
     post_characteristics = get_post_characteristics(post)
     return {"sentiment": sentiment} | post_characteristics
 
 
-def analyze_posts(posts):
+def analyze_posts(posts: List[Dict[str, str]]) -> List[Dict[str, str]]:
     analyzed_posts = []
     for post in posts:
         post_analysis = analyze_post(post)
@@ -61,7 +61,7 @@ def analyze_posts(posts):
     return analyzed_posts
 
 
-def write_analyzed_posts_to_csv_file(analyzed_posts):
+def write_analyzed_posts_to_csv_file(analyzed_posts: List[Dict[str, str]]) -> None:
     with open("analyzed_posts.csv", "w") as file:
         file.write("post_id,sentiment,duration_of_treatment,drug,dose,age\n")
         for post in analyzed_posts:
@@ -77,7 +77,7 @@ def write_analyzed_posts_to_csv_file(analyzed_posts):
 
 
 
-def read_posts_from_csv_file(file_path):
+def read_posts_from_csv_file(file_path: str) -> List[Dict[str, str]]:
     posts = []
     with open(file_path, "r") as file:
         reader = csv.DictReader(file)
