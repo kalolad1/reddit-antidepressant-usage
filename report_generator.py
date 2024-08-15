@@ -3,6 +3,9 @@ from typing import Any
 import pandas as pd
 
 import matplotlib.pyplot as plt  # type: ignore[import-not-found]
+import scienceplots  # type: ignore[import-not-found]
+
+plt.style.use("science")
 
 DATA_FILE_PATH = "analyzed_posts.csv"
 
@@ -16,7 +19,7 @@ def create_sentiment_analysis_comparative_bar_graph(data: pd.DataFrame) -> None:
     grouped_data = data.groupby(["drug", "sentiment"]).size().unstack()
 
     # Calculate the relative percentage of each sentiment for each drug
-    grouped_data["total"] = grouped_data.sum(axis=1)  # type: ignore[call-overload]
+    grouped_data["total"] = grouped_data.sum(axis=1)
     grouped_data["positive_percentage"] = (
         grouped_data["positive"] / grouped_data["total"] * 100
     )
@@ -31,21 +34,24 @@ def create_sentiment_analysis_comparative_bar_graph(data: pd.DataFrame) -> None:
     sorted_data = grouped_data.sort_values(by="positive_percentage", ascending=False)  # type: ignore[call-overload]
 
     # Create the graph
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(14, 8))
     sorted_data[
         ["negative_percentage", "neutral_percentage", "positive_percentage"]
-    ].plot(kind="bar", stacked=True)
-    plt.xlabel("Drug")
+    ].plot(kind="bar", stacked=True, color=["red", "orange", "green"])
+    plt.title("Percentage of user sentiments by drug", fontsize=10)
+    plt.xlabel("")
+    plt.xticks(rotation=45, ha="right")
     plt.ylabel("Percentage")
-    plt.title("Sentiment Analysis by Drug")
-    plt.legend(loc="lower right")
-    plt.show()
+    legend_labels = ["Negative", "Neutral", "Positive"]
+    plt.legend(legend_labels, loc="center left", bbox_to_anchor=(1, 0.5))
+    plt.savefig("figures/sentiment_analysis_comparative_bar_graph.png", dpi=300)
 
 
 def create_post_stats_table(data: pd.DataFrame) -> Any:
     grouped_data = data.groupby(["drug", "sentiment"]).size().unstack()
     grouped_data["total"] = grouped_data.sum(axis=1)
-    print(grouped_data)
+    grouped_data = grouped_data.fillna(0).astype(int)
+    grouped_data.loc["total"] = grouped_data.sum()
 
     fig, ax = plt.subplots()
     ax.axis("off")
@@ -55,15 +61,14 @@ def create_post_stats_table(data: pd.DataFrame) -> Any:
         rowLabels=grouped_data.index,
         loc="center",
     )
-    plt.show()
 
-    return grouped_data
+    plt.savefig("figures/sentiment_analysis_count_table.png", dpi=300)
 
 
 def main():
     data = read_posts_from_csv_file(DATA_FILE_PATH)
     create_post_stats_table(data)
-    # create_sentiment_analysis_comparative_bar_graph(data)
+    create_sentiment_analysis_comparative_bar_graph(data)
 
 
 if __name__ == "__main__":
