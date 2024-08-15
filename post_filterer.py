@@ -28,9 +28,9 @@ def filter_posts(posts: List[Dict[str, str]]) -> List[Dict[str, str]]:
             ],
         )
         result = completion.choices[0].message.content.strip().lower()
-        # print(post['selftext'])
-        # print(result)
-        # print('\n\n\n')
+        print(post['selftext'])
+        print(result)
+        print('\n\n\n')
         if "yes" in result:
             filtered_posts.append(post)
     return filtered_posts
@@ -56,13 +56,15 @@ def main() -> None:
     collector = post_collector.RedditPostCollector()
     SUBREDDITS = ["mentalhealth", "depression"]
     DAYS = 1000
-    SUBREDDIT_POST_LIMIT = 2
+    SUBREDDIT_POST_LIMIT = 35
     KEYWORDS = drugs.get_antidepressant_search_keywords()
 
     posts = collector.collect_posts(SUBREDDITS, SUBREDDIT_POST_LIMIT, DAYS, KEYWORDS)
+    print(f"Total posts collected: {len(posts)}")
 
     # Filter posts
     filtered_posts = filter_posts(posts)
+    print(f"Total posts filtered: {len(filtered_posts)}")
 
     write_posts_to_csv_file(filtered_posts)
 

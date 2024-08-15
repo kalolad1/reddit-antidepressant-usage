@@ -13,7 +13,13 @@ client = openai.OpenAI( # type: ignore[attr-defined]
 )
 with warnings.catch_warnings():
     warnings.simplefilter("ignore", category=FutureWarning)
-    sentiment_analysis_classifier = transformers.pipeline("text-classification", model="cardiffnlp/twitter-roberta-base-sentiment-latest")
+    model_path = "cardiffnlp/twitter-xlm-roberta-base-sentiment"
+    sentiment_analysis_classifier = transformers.pipeline(
+        "text-classification", 
+        model=model_path,
+        tokenizer=model_path,
+        max_length=512,
+        truncation=True)
 
 
 class PostCharactersticsExtraction(pydantic.BaseModel):
@@ -57,11 +63,13 @@ def analyze_posts(posts: List[Dict[str, str]]) -> List[Dict[str, str]]:
     for post in posts:
         post_analysis = analyze_post(post)
         analyzed_posts.append({"post_id": post["post_id"]} | post_analysis)
+        print(analyzed_posts[-1])
 
     return analyzed_posts
 
 
 def write_analyzed_posts_to_csv_file(analyzed_posts: List[Dict[str, str]]) -> None:
+    # TODO: Ensure that individual fields do not contain commas, or if they do, quote them
     with open("analyzed_posts.csv", "w") as file:
         file.write("post_id,sentiment,duration_of_treatment,drug,dose,age\n")
         for post in analyzed_posts:
@@ -88,5 +96,7 @@ def read_posts_from_csv_file(file_path: str) -> List[Dict[str, str]]:
 
 if __name__ == "__main__":
     posts = read_posts_from_csv_file("filtered_posts.csv")
+    print(f"Total posts to analyze: {len(posts)}")
+
     analyzed_posts = analyze_posts(posts)
     write_analyzed_posts_to_csv_file(analyzed_posts)

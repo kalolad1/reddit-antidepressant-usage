@@ -45,16 +45,6 @@ class RedditPostCollector:
                         collected_posts.append(
                             {"title": submission.title, "selftext": submission.selftext}
                         )
-                        # print(collected_posts[-1])
+                        print(collected_posts[-1])
 
         return collected_posts
-
-
-if __name__ == "__main__":
-    collector = RedditPostCollector()
-    SUBREDDITS = ["mentalhealth", "depression"]
-    DAYS = 1000
-    SUBREDDIT_POST_LIMIT = 2
-    KEYWORDS = drugs.get_antidepressant_search_keywords()
-
-    posts = collector.collect_posts(SUBREDDITS, SUBREDDIT_POST_LIMIT, DAYS, KEYWORDS)

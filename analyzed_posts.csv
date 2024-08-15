@@ -1,19 +1,1126 @@
 post_id,sentiment,duration_of_treatment,drug,dose,age
-0,positive,2 weeks,citalopram,,0
-1,negative,more than a week,citalopram,10mg,0
-2,negative,one day,citalopram,20mg,0
-3,negative,1 year,citalopram,unknown,23
-4,negative,not specified,escitalopram,not specified,0
-5,negative,2 years,escitalopram,10mg,0
-6,negative,1 day,escitalopram,10mg,0
-7,neutral,,escitalopram,,0
-8,neutral,5 weeks,escitalopram,10 mg,0
-9,negative,not specified,citalopram,10 mg,0
-10,negative,2 months,citalopram,,0
-11,negative,years,fluoxetine,,0
-12,negative,5 years,citalopram,,0
-13,neutral,,escitalopram,,0
-14,negative,10 years,escitalopram,10 mg,73
-15,positive,1 week,escitalopram,,0
-16,negative,2 months,escitalopram,,25
-17,negative,few weeks,escitalopram,20mg,0
+0,positive,almost 2 weeks,citalopram,,0
+1,negative,more than a week,citalopram,10 mg,0
+2,negative,since 9/14,citalopram,,0
+3,negative,3 years,citalopram,,0
+4,neutral,6 months,citalopram,20 mg,30
+5,negative,3 years,citalopram,30mg,22
+6,positive,not specified,citalopram,10mg daily,0
+7,negative,about a year,citalopram,not specified,23
+8,negative,nearly three years,citalopram,40mg,0
+9,neutral,one week,sertraline,50mg,0
+10,negative,recently,citalopram,10 mg,0
+11,negative,10 years,citalopram,,0
+12,negative,not specified,citalopram,not specified,0
+13,negative,3 years,citalopram,40 mg,0
+14,negative,,citalopram,,0
+15,negative,4 years,citalopram,20mcg,0
+16,negative,6 months,citalopram,unknown,0
+17,negative,unspecified,citalopram,50 mg,0
+18,negative,six weeks,citalopram,lowest dose,0
+19,negative,3 weeks,sertraline,50 mg,0
+20,negative,15 years,citalopram,40mg,0
+21,negative,1 day,citalopram,20mg,0
+22,negative,1 year,citalopram,not specified,23
+23,negative,a little over a yr,citalopram,not specified,34
+24,negative,6 or 7 days,citalopram,not specified,0
+25,negative,recently,citalopram,10 mg,0
+26,negative,15 years,citalopram,low dose,0
+27,negative,14 years,citalopram,,0
+28,negative,3 years,citalopram,,14
+29,negative,ongoing,citalopram,50 mg,0
+30,negative,1 year,bupropion,150mg,0
+31,negative,not specified,citalopram,not specified,0
+32,negative,not specified,citalopram,20mg,0
+33,negative,2 weeks,paroxetine,20mg,0
+34,negative,unknown,escitalopram,unknown,0
+35,negative,1 week,escitalopram,10 mg,0
+36,negative,6 years,escitalopram,30mg,18
+37,negative,6 months,escitalopram,,0
+38,negative,4 years,sertraline,200mg,23
+39,negative,one year,escitalopram,,0
+40,negative,8 days,escitalopram,10 mg,0
+41,negative,1 year,escitalopram,20 mg,0
+42,negative,three years,escitalopram,not specified,0
+43,negative,not specified,escitalopram,not specified,0
+44,negative,1 month,escitalopram,10g,0
+45,negative,not started,escitalopram,5mg,27
+46,neutral,unknown,escitalopram,unknown,0
+47,negative,unknown,escitalopram,120mg,16
+48,negative,a few weeks,escitalopram,,0
+49,negative,two months,escitalopram,20 mg,30
+50,negative,20 days,escitalopram,20mg,22
+51,negative,3 weeks,escitalopram,10 mg,0
+52,negative,2.5 weeks,escitalopram,10mg,0
+53,negative,2 years,escitalopram,10mg,0
+54,negative,1 day,escitalopram,10mg,0
+55,negative,1 day,escitalopram,10 mg,0
+56,negative,13 months,escitalopram,,0
+57,negative,years,escitalopram,,0
+58,negative,approximately 6 months,escitalopram,unknown,0
+59,negative,over 5 years,escitalopram,20mg,0
+60,negative,1 day,escitalopram,not specified,0
+61,negative,1 year,escitalopram,10 mg,0
+62,negative,11 months,escitalopram,,0
+63,negative,11 months,escitalopram,20mg,0
+64,negative,3 weeks,escitalopram,,0
+65,negative,not specified,escitalopram,10mg,0
+66,negative,4 weeks,buspirone,7.5mg twice a day,0
+67,negative,a little bit,sertraline,crazy low dosage,0
+68,negative,11 months,escitalopram,10mg,0
+69,negative,newly prescribed,escitalopram,10mg,0
+70,negative,1 month,escitalopram,very low,0
+71,negative,5 weeks,escitalopram,10 mg,0
+72,negative,4 weeks,escitalopram,,0
+73,negative,2 months,escitalopram,,0
+74,negative,approximately 3 weeks,escitalopram,10mg,0
+75,negative,1 week,escitalopram,,0
+76,negative,not specified,escitalopram,not specified,0
+77,negative,unspecified,escitalopram,20mg,0
+78,negative,1 week switching between drugs,fluoxetine,not specified,0
+79,neutral,not specified,escitalopram,not specified,0
+80,negative,5 weeks,escitalopram,10 mg,0
+81,negative,5 weeks,escitalopram,10 mg,0
+82,negative,6 to 8 weeks,escitalopram,10 mg,0
+83,negative,unknown,escitalopram,unknown,0
+84,negative,not specified,escitalopram,not specified,31
+85,negative,7 years,escitalopram,,0
+86,negative,unknown,clonazepam,unknown,39
+87,negative,more than a year,escitalopram,20 mg,0
+88,negative,3 months,escitalopram,10 mg,0
+89,negative,n/a,escitalopram,n/a,24
+90,negative,1-2 years,escitalopram,not specified,0
+91,negative,1 month,escitalopram,15mg,0
+92,negative,more than 5 months,escitalopram,,0
+93,negative,not specified,escitalopram,not specified,22
+94,negative,3 months,escitalopram,20mg,18
+95,negative,4 months,sertraline,75mg,0
+96,negative,5 years,fluoxetine,40mg,18
+97,negative,4-5 months,fluoxetine,20mg,0
+98,negative,,fluoxetine,60 mg,0
+99,negative,13 days,fluoxetine,,0
+100,negative,2 years,bupropion,300mg,0
+101,negative,not specified,fluoxetine,20mg,0
+102,negative,13 days,fluoxetine,,0
+103,negative,6 years,fluoxetine,unknown,40
+104,negative,a couple of months,fluoxetine,not specified,0
+105,negative,1 year,fluoxetine,,0
+106,negative,1 week,fluoxetine,,14
+107,negative,three years,fluoxetine,,0
+108,negative,not specified,sertraline,not specified,0
+109,negative,2 weeks,fluoxetine,,0
+110,negative,2 months,fluoxetine,not specified,18
+111,neutral,6 months,mirtazapine,15mg,0
+112,negative,2 months,fluoxetine,,0
+113,negative,4 years,fluoxetine,10mg,0
+114,negative,recently started,fluoxetine,not specified,0
+115,negative,5 days,fluoxetine,10mg,0
+116,negative,4-5 years,fluoxetine,20mg-40mg,22
+117,negative,4 days,fluoxetine,20mg,0
+118,negative,3 days,fluoxetine,,0
+119,negative,6 weeks,fluoxetine,150 mg,0
+120,negative,not specified,fluoxetine,not specified,0
+121,negative,unknown,fluoxetine,unknown,0
+122,negative,4 days,fluoxetine,20mg,0
+123,neutral,not specified,fluoxetine,not specified,0
+124,negative,6 days,fluoxetine,10mg,0
+125,negative,over a month,fluoxetine,60mg,0
+126,negative,14 days,fluoxetine,20 mg,35
+127,positive,not specified,fluoxetine,not specified,0
+128,negative,unknown,fluoxetine,60 mg,0
+129,negative,4 days,fluoxetine,,0
+130,negative,unspecified,fluoxetine,100mg,0
+131,negative,not specified,fluoxetine,lowest dose,0
+132,neutral,few weeks,fluoxetine,,0
+133,negative,about a year,lamotrigine,,0
+134,neutral,7 years on zoloft 3 years on lexapro 6 months on zoloft,sertraline,150 mg,0
+135,positive,6 weeks,fluoxetine,not specified,0
+136,negative,1.5 weeks,fluoxetine,10mg,0
+137,negative,2 to 3 months,fluoxetine,,24
+138,negative,not specified,fluoxetine,not specified,0
+139,negative,2 years,paroxetine,,26
+140,negative,2 years for bromazepam 8 months for paroxetine,paroxetine,40mg daily,26
+141,negative,1 year,venlafaxine,37.5mg,0
+142,negative,5 weeks,fluvoxamine,50mg,0
+143,negative,unknown,paroxetine,5 mg,0
+144,negative,two years,paroxetine,20mg,0
+145,negative,three years,fluoxetine,,0
+146,negative,2 months,paroxetine,20mg,0
+147,negative,5 days,paroxetine,half,0
+148,negative,1.5 years,paroxetine,25 mg,0
+149,negative,unknown,paroxetine,half,0
+150,negative,7 years,paroxetine,,0
+151,negative,not specified,paroxetine,40mg,0
+152,negative,1 week,paroxetine,25mg,0
+153,negative,6 years,lamotrigine,100 mg,0
+154,negative,not specified,paroxetine,40mg,0
+155,negative,not specified,paroxetine,not specified,25
+156,negative,unknown,paroxetine,20mg,0
+157,negative,4 days,paroxetine,20mg,0
+158,negative,not specified,depakine,1¼ tablets of 300 mg,0
+159,negative,a few months,quetiapine,not specified,0
+160,negative,n/a,aripiprazole,10mg,0
+161,negative,not specified,trazodone,not specified,0
+162,negative,1 year,risperidone,3mg,22
+163,negative,short period of time,fluvoxamine,,0
+164,negative,10 years,paroxetine,20mg,0
+165,negative,over two decades,paroxetine,20mg,0
+166,negative,ten years,paroxetine,30mg,0
+167,neutral,25 years,paroxetine,,0
+168,negative,12 years,paroxetine,37mg,0
+169,negative,6 weeks,sertraline,10mg,0
+170,negative,4 days,paroxetine,,0
+171,neutral,not specified,paroxetine,not specified,0
+172,negative,n/a,paroxetine,n/a,0
+173,negative,12 weeks,sertraline,200 mg,0
+174,negative,years,buspirone,,0
+175,negative,9 days,wellbutrin,150 mg,26
+176,negative,ongoing,sertraline,200mg,0
+177,negative,1 day,sertraline,50mg,0
+178,negative,1 day,sertraline,50mg,0
+179,negative,less than a week,sertraline,not specified,15
+180,negative,not specified,sertraline,200mg,28
+181,negative,,sertraline,,0
+182,negative,4 months,sertraline,75mg,0
+183,negative,almost two years,sertraline,100mg,0
+184,negative,recently started,sertraline,not specified,0
+185,negative,1 year,sertraline,200mg,0
+186,negative,not specified,sertraline,not specified,0
+187,negative,1 week,sertraline,50mg,0
+188,negative,several months,sertraline,25mg,20
+189,negative,since november 2022,sertraline,100mg,0
+190,negative,11 years,sertraline,50 milligrams,28
+191,negative,3 days,sertraline,,0
+192,negative,unknown,sertraline,unknown,0
+193,negative,1 year,sertraline,50mg,0
+194,negative,not specified,sertraline,200 mg,0
+195,negative,three weeks,sertraline,200mg,0
+196,negative,approximately 1 year,sertraline,50mg,0
+197,negative,more than two months,sertraline,50 mg,0
+198,negative,2 days,sertraline,not specified,0
+199,negative,unknown,sertraline,200mg,17
+200,negative,4 months,sertraline,,42
+201,negative,one year,escitalopram,,0
+202,negative,4 years,quetiapine,not specified,0
+203,negative,4 years,sertraline,200mg,23
+204,negative,not specified,sertraline,not specified,0
+205,negative,2 months,sertraline,25mg,0
+206,negative,not specified,sertraline,not specified,27
+207,negative,6 years,sertraline,150 mg,0
+208,negative,3 years,sertraline,200mg,20
+209,negative,unspecified,sertraline,100 mg every other day,0
+210,negative,2 months,sertraline,,0
+211,negative,not specified,sertraline,100mg in the morning 25mg at night,0
+212,negative,not specified,sertraline,175mg,0
+213,neutral,unknown,sertraline,150mg,0
+214,negative,most of my life,sertraline,50mg,0
+215,negative,a little bit,sertraline,crazy low,0
+216,neutral,7 days,sertraline,,0
+217,negative,3 months,sertraline,50mg,17
+218,negative,,sertraline,25mg to 50mg,0
+219,negative,,sertraline,,0
+220,negative,recently prescribed,sertraline,,0
+221,negative,3 years,sertraline,150mg,30
+222,negative,three weeks,sertraline,200mg,0
+223,negative,3 days,sertraline,,0
+224,negative,,sertraline,,0
+225,negative,not specified,sertraline,not specified,0
+226,negative,two and a half weeks,sertraline,,20
+227,negative,5 years,sertraline,25mg every other day,0
+228,negative,3 years,sertraline,not specified,0
+229,negative,8 months,sertraline,unknown,20
+230,negative,8 months,quetiapine,12.5mg twice in the evening,32
+231,negative,1 day,duloxetine,unknown,0
+232,negative,8 years,duloxetine,60mg,19
+233,negative,unspecified,duloxetine,unspecified,0
+234,neutral,not specified,duloxetine,not specified,0
+235,positive,1 month,duloxetine,30 mg,0
+236,negative,about a month,duloxetine,,0
+237,negative,6 weeks,duloxetine,30 mg,59
+238,negative,approximately 1 month,duloxetine,not specified,61
+239,negative,over 15 years,duloxetine,60mg to 20mg,0
+240,negative,not specified,duloxetine,not specified,0
+241,negative,not specified,duloxetine,60mg,0
+242,negative,three weeks,sertraline,200mg,0
+243,negative,not specified,paroxetine,40mg,0
+244,negative,ongoing,duloxetine,not specified,0
+245,negative,over 10 years,sertraline,100mg,0
+246,negative,several years,fluoxetine,varies,16
+247,negative,3 years,duloxetine,not specified,0
+248,negative,2 weeks,duloxetine,,0
+249,negative,less than 1 month,duloxetine,not specified,0
+250,negative,currently on duloxetine,duloxetine,,0
+251,negative,currently taking,duloxetine,highest dosage,0
+252,negative,not specified,duloxetine,not specified,0
+253,negative,not specified,duloxetine,not specified,0
+254,negative,two months,duloxetine,low mg,0
+255,negative,6 years,duloxetine,60 mg,0
+256,neutral,,duloxetine,,0
+257,negative,8 days,duloxetine,,0
+258,negative,9 months,duloxetine,,0
+259,negative,6 years,duloxetine,60mg twice per day,28
+260,negative,since may 8th of 2022,bupropion,150 mg,59
+261,negative,about a month,duloxetine,,0
+262,negative,15 years,duloxetine,20 mg,0
+263,negative,unknown,duloxetine,unknown,0
+264,negative,3 months,venlafaxine,75mg for 2 months 150mg for 1 month,0
+265,negative,less than 1 month,venlafaxine,unknown,0
+266,negative,less than a day,venlafaxine,37.5mg,0
+267,negative,half a year,venlafaxine,225mg,0
+268,negative,over a year,venlafaxine,75mg,56
+269,negative,2 years,venlafaxine,225mg,0
+270,negative,unspecified,venlafaxine,unspecified,0
+271,negative,2-3 months,venlafaxine,,0
+272,negative,since august,venlafaxine,not specified,29
+273,negative,6 years,venlafaxine,225mg,0
+274,negative,10 weeks,venlafaxine,75mg,0
+275,negative,few days,venlafaxine,75mg,0
+276,negative,four weeks,venlafaxine,increased dosage,0
+277,negative,not specified,venlafaxine,not specified,0
+278,negative,2 days,venlafaxine,,0
+279,negative,not specified,venlafaxine,not specified,0
+280,negative,6 years,venlafaxine,,0
+281,negative,4 years,venlafaxine,225mg,18
+282,negative,about 1 month,venlafaxine,150mg,0
+283,negative,4 days,venlafaxine,37.5 mg,0
+284,negative,long-term,venlafaxine,not specified,0
+285,negative,one week,venlafaxine,,0
+286,negative,3 days,venlafaxine,not specified,25
+287,negative,9 months,venlafaxine,200 mg,32
+288,negative,new med today,venlafaxine,not specified,0
+289,negative,3 months,venlafaxine,75mg for 2 months 150mg for 1 month,0
+290,negative,5 and a half years,venlafaxine,37.5 mg,0
+291,negative,6 months,venlafaxine,225mg,0
+292,negative,1 year,venlafaxine,112.5 mg,17
+293,negative,less than 1 week,venlafaxine,lower dosage,19
+294,negative,1 week,venlafaxine,37.5 mg,0
+295,negative,several months,venlafaxine,150mg,0
+296,negative,6 years,venlafaxine,225mg,0
+297,negative,10 weeks,venlafaxine,75mg,0
+298,negative,3 years,venlafaxine,,0
+299,negative,14 years,venlafaxine,150 mg,0
+300,negative,1 year,venlafaxine,37.5mg,0
+301,negative,5 months,venlafaxine,not specified,0
+302,negative,9 months,venlafaxine,150mg,0
+303,negative,many months,venlafaxine,half of a tablet,34
+304,negative,a few days,venlafaxine,,0
+305,negative,few days,venlafaxine,75mg,0
+306,negative,3 days,venlafaxine,not specified,0
+307,negative,16 days,venlafaxine,150mg,0
+308,neutral,not specified,duloxetine,not specified,0
+309,neutral,1 month,venlafaxine,,0
+310,negative,recently started,venlafaxine,not specified,0
+311,negative,not specified,venlafaxine,not specified,0
+312,negative,1 dose,venlafaxine,37.5mg,0
+313,negative,unknown,venlafaxine,unknown,0
+314,negative,less than a week,venlafaxine,not specified,0
+315,negative,not specified,venlafaxine,not specified,0
+316,negative,6 days,venlafaxine,37.5 mg,0
+317,negative,long while,venlafaxine,,0
+318,negative,3 months,trazodone,50mg to 100mg,0
+319,negative,9 months,trazodone,25mg,0
+320,negative,about a week and a half,trazodone,as needed,22
+321,negative,6 days,trazodone,,16
+322,negative,not specified,trazodone,not specified,0
+323,negative,not specified,trazodone,not specified,0
+324,negative,a while,trazodone,,0
+325,negative,not specified,bupropion,150mg,0
+326,negative,1 month,sertraline,50mg,0
+327,negative,6 years,venlafaxine,50mg,30
+328,negative,a little over a month,trazodone,not specified,0
+329,negative,unknown,sertraline,unknown,0
+330,negative,not specified,fluoxetine,not specified,0
+331,negative,1.5 years,duloxetine,100 mg,0
+332,negative,not specified,duloxetine,not specified,0
+333,negative,not specified,venlafaxine,not specified,0
+334,negative,2 months,bupropion,450 mg,0
+335,negative,2 years,bupropion,300mg,0
+336,negative,recently started,bupropion,150,0
+337,neutral,not specified,bupropion,300mg,0
+338,negative,1 year,bupropion,150 mg,59
+339,negative,5 weeks,bupropion,150 mg,0
+340,negative,6 weeks,duloxetine,30 mg,59
+341,negative,6 weeks,bupropion,225 mg,0
+342,negative,few years,vortioxetine,10mg of vortioxetine 150mg of bupropion,0
+343,negative,3 weeks,bupropion,150 mg,0
+344,negative,unknown,bupropion,unknown,0
+345,neutral,not specified,venlafaxine,450 mg,0
+346,negative,about a month,bupropion,,0
+347,neutral,unspecified,lamotrigine,100 mg,0
+348,negative,1 year,escitalopram,10 mg,0
+349,negative,three weeks,bupropion,not specified,0
+350,negative,not specified,bupropion,6,0
+351,negative,most of my life,bupropion,150mg,0
+352,negative,first time,bupropion,150 mg,27
+353,negative,recently started,bupropion,not specified,0
+354,negative,4 months,bupropion,150,0
+355,negative,3 hours,bupropion,150mg,0
+356,negative,4 days,bupropion,,0
+357,negative,6 weeks,bupropion,150mg,0
+358,negative,8 years,sertraline,100mg,0
+359,negative,2 months,bupropion,,0
+360,negative,longer than he should have been,bupropion,not specified,0
+361,negative,1 month,bupropion,not specified,0
+362,neutral,not specified,bupropion,not specified,0
+363,negative,recently started,bupropion,150mg,0
+364,negative,not specified,atomoxetine,not specified,0
+365,negative,2 months,bupropion,150 mg,0
+366,negative,,bupropion,,0
+367,neutral,1 week,bupropion,150mg,21
+368,negative,7 days,bupropion,,0
+369,negative,2 months,bupropion,150mg,26
+370,neutral,,bupropion,300mg,0
+371,negative,unknown,bupropion,unknown,0
+372,negative,6 months,bupropion,300mg,0
+373,negative,approximately six months,escitalopram,2 mg,18
+374,negative,not specified,amitriptyline,not specified,28
+375,negative,three years,escitalopram,,0
+376,negative,1 day,amitriptyline,,0
+377,negative,not specified,amitriptyline,75 mg,0
+378,negative,not specified,amitriptyline,150 mg,0
+379,negative,1 1/2 years,amitriptyline,,68
+380,negative,1.5 years,sertraline,25 mg,0
+381,negative,1 year,amitriptyline,10mg,0
+382,negative,since march,fluoxetine,not specified,0
+383,negative,3/4 weeks,amitriptyline,,0
+384,negative,4 years,amitriptyline,225 mg,35
+385,negative,2 weeks,amitriptyline,12.5 mg,0
+386,negative,few times,amitriptyline,10mg,0
+387,negative,not specified,pregabalin,not specified,15
+388,negative,5 months,sertraline,50mg,0
+389,negative,3 years,amitriptyline,,21
+390,negative,recently started,amitriptyline,increase by 50%,0
+391,negative,not specified,amitriptyline,not specified,0
+392,negative,first day,ziprasidone,1 in the morning 2 at night,0
+393,negative,briefly,fluoxetine,10mg,0
+394,negative,3 years,fluoxetine,20mg,0
+395,negative,9 weeks,amitriptyline,,0
+396,negative,1.5 years,mirtazapine,lowest doses,0
+397,negative,not specified,sertraline,100mg,22
+398,negative,unknown,bupropion,once a day,0
+399,negative,not specified,amitriptyline,not specified,28
+400,negative,more than twenty years,amitriptyline,,50
+401,negative,17 months,amitriptyline,75 mg,0
+402,negative,17 months,amitriptyline,75 mg,0
+403,negative,unknown,amitriptyline,unknown,21
+404,negative,unknown,duloxetine,unknown,0
+405,negative,3 years,buspirone,unknown,30
+406,negative,almost 2 years,venlafaxine,37.5 mg,27
+407,negative,8 months,clomipramine,10mg,0
+408,neutral,not specified,clomipramine,not specified,0
+409,negative,10 months,clomipramine,75mg,30
+410,negative,unknown,clomipramine,unknown,0
+411,negative,3 weeks,clomipramine,150mg,0
+412,negative,short period of time,fluvoxamine,,0
+413,negative,unspecified,fluvoxamine,unspecified,0
+414,negative,5 months,clomipramine,,0
+415,negative,not specified,clomipramine,not specified,0
+416,positive,not specified,clomipramine,not specified,0
+417,neutral,,clomipramine,,0
+418,negative,unknown,venlafaxine,225mg,0
+419,negative,not specified,clomipramine,150mg,0
+420,negative,not specified,clomipramine,150mg,0
+421,negative,ongoing,clomipramine,not specified,0
+422,negative,currently on,duloxetine,not specified,0
+423,negative,not specified,duloxetine,not specified,0
+424,negative,very short term,fluoxetine,not specified,0
+425,negative,several years,fluoxetine,unknown,35
+426,negative,8 months,clomipramine,10mg,0
+427,negative,two months,clomipramine,1 mg,0
+428,negative,whole life,clomipramine,unknown,32
+429,negative,unknown,clomipramine,150 mg,0
+430,negative,currently on,duloxetine,,0
+431,negative,6 years,bupropion,unknown,23
+432,negative,years,clomipramine,not specified,0
+433,negative,many years,fluoxetine,not specified,0
+434,negative,unknown,bupropion,unknown,0
+435,negative,recent,clomipramine,50mg,0
+436,negative,5 years,quetiapine,high (max?),23
+437,negative,a few years,pregabalin,75mg twice daily,0
+438,negative,not specified,doxepin,not specified,27
+439,negative,3 years,fluoxetine,not specified,17
+440,negative,2 weeks,pregabalin,150mg in the morning 100mg in the evening,23
+441,negative,not specified,venlafaxine,225mg,0
+442,negative,several years,fluoxetine,not specified,0
+443,negative,not specified,paroxetine,not specified,31
+444,negative,not specified,nortriptyline,not specified,29
+445,negative,1 month,sertraline,50mg,30
+446,negative,not specified,escitalopram,10mg 25mg,0
+447,negative,2 years,nortriptyline,40mg,0
+448,negative,not specified,nortriptyline,not specified,0
+449,negative,2 months,escitalopram,20 mg,30
+450,negative,20 days,buprenorphine,4mg,30
+451,negative,3 weeks,buprenorphine,4mg,30
+452,negative,almost 2 years,escitalopram,10 mg,0
+453,negative,unknown,amitriptyline,unknown,29
+454,negative,6 years,duloxetine,60mg,28
+455,negative,not specified,mirtazapine,not specified,0
+456,negative,less than a week,mirtazapine,7.5 mg,0
+457,negative,since early 2020,mirtazapine,30mg,0
+458,negative,2 days,mirtazapine,15mg,0
+459,negative,unknown,mirtazapine,unknown,0
+460,negative,less than a week,mirtazapine,not specified,0
+461,negative,4-5 years,mirtazapine,15mg,0
+462,negative,8 months,mirtazapine,half a dose,0
+463,negative,not specified,mirtazapine,15mg,24
+464,negative,4 weeks,mirtazapine,15mg,0
+465,negative,not specified,fluoxetine,20mg,0
+466,negative,1 month,escitalopram,10g,0
+467,negative,1 year,mirtazapine,30mg,0
+468,negative,a few days,mirtazapine,7.5mg,0
+469,negative,2 nights,mirtazapine,15mg,0
+470,negative,2 months,bupropion,,0
+471,negative,3 months,mirtazapine,15 mg,30
+472,neutral,6 months,mirtazapine,15mg,0
+473,negative,2 days,mirtazapine,30mg,0
+474,negative,0 weeks,pregabalin,150 mg,23
+475,negative,a few days,mirtazapine,7.5mg,0
+476,neutral,1.5 years,mirtazapine,7.5 mg,0
+477,negative,1 month,mirtazapine,not specified,0
+478,negative,3-4 weeks,mirtazapine,7.5mg,0
+479,negative,not specified,escitalopram,not specified,0
+480,negative,1 summer,mirtazapine,,0
+481,negative,1 month,sertraline,50mg,0
+482,negative,1 year and 9 months,sertraline,unknown,0
+483,negative,2 years,quetiapine,250mg,0
+484,negative,over 2 years,mirtazapine,15mg,0
+485,negative,3 weeks,mirtazapine,22.5 mg,0
+486,negative,14 years,mirtazapine,,0
+487,negative,not specified,fluoxetine,not specified,39
+488,negative,1.5 weeks,mirtazapine,,0
+489,negative,1 year,escitalopram,20 mg,28
+490,negative,3 years,fluoxetine,not specified,16
+491,negative,8 months,venlafaxine,not specified,30
+492,negative,6 months,mirtazapine,,0
+493,negative,7 years,mirtazapine,30mg,22
+494,negative,ten years,phenelzine,high doses,0
+495,negative,1.5 months,phenelzine,75mg,31
+496,negative,7 years,mirtazapine,30mg,22
+497,negative,unknown,gabapentin,unknown,0
+498,negative,not specified,duloxetine,not specified,0
+499,negative,current treatment ongoing,mirtazapine,not specified,22
+500,negative,currently on mirtazapine,mirtazapine,not specified,22
+501,negative,7 years,mirtazapine,30mg,22
+502,negative,5 days,pregabalin,150mg,23
+503,neutral,not specified,quetiapine,not specified,0
+504,negative,2 days,quetiapine,200mg,0
+505,negative,not specified,quetiapine,50mg,0
+506,negative,4 months,quetiapine,200 mg,0
+507,negative,1-2 weeks,quetiapine,25mg,0
+508,negative,unknown,quetiapine,300 mg,0
+509,negative,over a year,quetiapine,half a tablet,0
+510,neutral,since spring 2021,quetiapine,25mg to 50mg,0
+511,negative,6 months,escitalopram,,0
+512,negative,one year,quetiapine,50 mg and 100 mg xr,0
+513,negative,2 months,quetiapine,50mg,0
+514,negative,1 year,quetiapine,not specified,0
+515,negative,less than a week,quetiapine,25mg,0
+516,negative,7 days,quetiapine,75mg,0
+517,neutral,n/a,quetiapine,n/a,0
+518,negative,unspecified,quetiapine,50mg in the morning and 150mg at night,0
+519,neutral,,quetiapine,12.5mg,0
+520,neutral,not specified,quetiapine,25mg twice a day,0
+521,negative,4 years,quetiapine,150 mgs,0
+522,negative,1 week,quetiapine,lowest dose,0
+523,negative,3 days,quetiapine,not specified,0
+524,negative,not specified,venlafaxine,not specified,0
+525,negative,a couple of months,quetiapine,,0
+526,negative,6 years,quetiapine,25mg,0
+527,negative,unknown,quetiapine,50mg,0
+528,negative,2 years,quetiapine,250mg,0
+529,negative,1 month,quetiapine,25mg,0
+530,neutral,over 2 years,quetiapine,50mg,0
+531,negative,not specified,quetiapine,300 mg,0
+532,negative,about 3 years,venlafaxine,,19
+533,negative,1 year,quetiapine,20mg,0
+534,negative,not specified,quetiapine,150mg,31
+535,negative,1 year,quetiapine,not specified,0
+536,negative,2 days,quetiapine,300mg,0
+537,negative,4 years,quetiapine,not specified,0
+538,negative,1 month,quetiapine,25mg,0
+539,negative,not specified,quetiapine,12.5 mg,0
+540,negative,3 days,lithium,300 mg of lithium; 100 mg of seroquel,0
+541,negative,1 month,quetiapine,not specified,0
+542,negative,5 days,quetiapine,50mg,0
+543,negative,22 years,quetiapine,50mg,31
+544,negative,not specified,quetiapine,100mg,0
+545,negative,1 year,quetiapine,50mg to 150mg,20
+546,negative,a few years,quetiapine,100mg,0
+547,negative,4 months,quetiapine,150mg,0
+548,negative,3 years,quetiapine,150mg,0
+549,negative,12 weeks,sertraline,200 mg,0
+550,negative,not specified,esketamine,not specified,0
+551,negative,not specified,esketamine,not specified,0
+552,negative,not specified,duloxetine,not specified,0
+553,negative,a few months,sertraline,not specified,0
+554,neutral,2 years,ketamine,,0
+555,neutral,2 years,ketamine,,0
+556,negative,2.5 years,esketamine,,31
+557,negative,a couple of months,esketamine,,0
+558,negative,weekly,esketamine,not specified,0
+559,negative,6 months,esketamine,various,0
+560,negative,9 years,aripiprazole,unknown,0
+561,negative,current,duloxetine,,0
+562,negative,2 months,lamotrigine,,21
+563,negative,not specified,abilify,not specified,0
+564,negative,1 day,ketamine,10 mg,0
+565,neutral,2 years,ketamine,,0
+566,negative,10 weeks,venlafaxine,not specified,0
+567,neutral,since 2021,ketamine,,0
+568,negative,years,phenylalanine,500mg dlpa with one or two 200mg 5-htp,0
+569,negative,7 years,escitalopram,not specified,0
+570,negative,not specified,tryptophan,not specified,0
+571,negative,2 to 3 months,mdma,2 ecstasys,24
+572,negative,2 months,citalopram,,0
+573,negative,over a week,escitalopram,20mg,0
+574,negative,unknown,citalopram,unknown,0
+575,negative,4 weeks,citalopram,10mg,15
+576,negative,1 week,sertraline,50mg,0
+577,negative,6 months,citalopram,30mg,21
+578,negative,not specified,citalopram,10mg,0
+579,negative,november 2021 to present,citalopram,10 mg,37
+580,negative,15 years,citalopram,40mg,7
+581,negative,1 year,sertraline,,0
+582,negative,five years,citalopram,40mg,0
+583,negative,3 days,citalopram,20mg,0
+584,negative,less than 1 day,citalopram,not specified,0
+585,negative,3 years,citalopram,40mg,0
+586,negative,20 yrs,citalopram,20 mg,29
+587,negative,10 years,citalopram,10 mg,0
+588,negative,5 years,vortioxetine,40 mg,0
+589,negative,2 years,citalopram,20mg,0
+590,negative,since december,citalopram,highest dose,0
+591,negative,2 weeks,citalopram,10 mg 5 mg,0
+592,negative,almost a year,citalopram,,0
+593,negative,unknown,citalopram,10 mg,0
+594,negative,unspecified,citalopram,unspecified,0
+595,negative,a few days,citalopram,,0
+596,negative,18 years,bupropion,daily,52
+597,negative,1 year,citalopram,40 mg,26
+598,negative,long time,citalopram,,0
+599,negative,2 years,citalopram,40mg,0
+600,negative,6 months,citalopram,25 mg,0
+601,negative,unspecified,citalopram,unspecified,0
+602,negative,not specified,citalopram,20mg,0
+603,negative,,citalopram,,0
+604,negative,5 years,citalopram,40mg,0
+605,negative,6 years,citalopram,,0
+606,negative,1-2 years,escitalopram,,0
+607,negative,20 yrs,citalopram,20 mg,29
+608,negative,almost 10 years,citalopram,20 mg,29
+609,negative,1 year,citalopram,5mg,0
+610,negative,9 years,citalopram,40mg,0
+611,negative,a few months,sertraline,maxed out,0
+612,negative,about 3 years,citalopram,2.5mg and 5mg,0
+613,negative,not specified,citalopram,20mg,0
+614,negative,6 months,escitalopram,,0
+615,negative,unknown,citalopram,unknown,0
+616,negative,3 weeks,citalopram,,0
+617,negative,3 weeks,citalopram,,0
+618,negative,5 years,citalopram,,0
+619,negative,not specified,escitalopram,20mg,0
+620,negative,2 months,escitalopram,20mg,0
+621,negative,,escitalopram,,0
+622,negative,1 day,escitalopram,10mg,0
+623,negative,a few weeks,escitalopram,20mg,0
+624,negative,4 years,escitalopram,30mg,50
+625,negative,2 weeks,escitalopram,,0
+626,negative,8 days,escitalopram,10mg for the first 7 days 20mg thereafter,0
+627,negative,a few months,escitalopram,not specified,0
+628,negative,2 months,escitalopram,not specified,25
+629,negative,1 week,escitalopram,,0
+630,neutral,since 2008,escitalopram,10 mg,0
+631,negative,2 years,escitalopram,5mg,25
+632,negative,a couple months,escitalopram,20mg,0
+633,negative,10 days,escitalopram,10mg,0
+634,negative,10 days,escitalopram,5mg,0
+635,negative,ten years,escitalopram,highest dose,0
+636,positive,1 week,escitalopram,,0
+637,negative,10 years,escitalopram,10 mg,73
+638,negative,,escitalopram,,0
+639,negative,not specified,desvenlafaxine,not specified,0
+640,negative,3 days,escitalopram,10mg,0
+641,negative,1 year,escitalopram,20mg,0
+642,negative,7 months,escitalopram,,0
+643,negative,5 years,escitalopram,,0
+644,negative,2 weeks,escitalopram,,0
+645,negative,couple of months,escitalopram,not specified,0
+646,negative,6 months,escitalopram,10mg,0
+647,negative,3 months,sertraline,50mg,21
+648,negative,6 months,escitalopram,20 mg,22
+649,negative,2 months,escitalopram,10mg,0
+650,negative,7 weeks,escitalopram,10mg,0
+651,neutral,many years,desvenlafaxine,20 mg,0
+652,negative,1 month,escitalopram,,0
+653,negative,1 month,duloxetine,,0
+654,negative,4 years,escitalopram,20mg,0
+655,neutral,newly prescribed,escitalopram,not specified,0
+656,negative,3 weeks,bupropion,,0
+657,negative,one month,escitalopram,,0
+658,negative,1.5 weeks,escitalopram,20mg,0
+659,negative,5 weeks,escitalopram,10 mg,0
+660,negative,4 months,escitalopram,,0
+661,negative,2 years,escitalopram,not specified,0
+662,negative,1 year,escitalopram,20mg,0
+663,negative,2 months,escitalopram,not specified,25
+664,negative,not specified,escitalopram,10 mg,0
+665,negative,a few weeks,escitalopram,20mg,0
+666,negative,2 weeks,escitalopram,,0
+667,negative,7 years,escitalopram,10 mg,0
+668,negative,1 month,escitalopram,10 mg,0
+669,neutral,4 years,escitalopram,10mg,0
+670,neutral,,bupropion,,0
+671,negative,approximately 2 months,escitalopram,20mg,0
+672,neutral,not specified,fluoxetine,not specified,0
+673,negative,2 years,fluoxetine,,0
+674,negative,7 months,fluoxetine,20 mg,0
+675,negative,1 month,fluoxetine,low doses,0
+676,negative,not specified,fluoxetine,10mg,21
+677,negative,a few months,fluoxetine,60mg,0
+678,neutral,,fluoxetine,,0
+679,negative,few days,fluoxetine,240mg,17
+680,negative,initial,fluoxetine,first dose,0
+681,negative,not specified,fluoxetine,not specified,0
+682,negative,a few years,fluoxetine,40mg,0
+683,negative,9 days,fluoxetine,20mg,22
+684,negative,5 months,fluoxetine,not specified,36
+685,negative,just started,fluoxetine,20mg,0
+686,negative,not specified,fluoxetine,40 mg,0
+687,negative,,fluoxetine,,0
+688,negative,8 days,fluoxetine,20mg,0
+689,negative,4 years,fluoxetine,20mg,20
+690,negative,not specified,fluoxetine,20mg,0
+691,negative,10 years,fluoxetine,25mg,0
+692,negative,not specified,fluoxetine,low starter dosage,0
+693,negative,unknown,duloxetine,low,0
+694,negative,8 months,fluoxetine,20 mg,0
+695,negative,2 weeks,fluoxetine,,22
+696,negative,1 day,fluoxetine,not specified,0
+697,negative,10 months,bupropion,150mg/10mg,0
+698,negative,10 days,fluoxetine,10 mg,0
+699,negative,1 day,fluoxetine,unknown,0
+700,negative,years,fluoxetine,,0
+701,negative,over a year,fluoxetine,60mg,0
+702,negative,not specified,bupropion,150 mg,0
+703,negative,1 month,fluoxetine,low,0
+704,negative,3 months,fluoxetine,60 mg,18
+705,negative,8 days,fluoxetine,,0
+706,negative,may to present,fluoxetine,unknown,0
+707,negative,not specified,fluoxetine,not specified,0
+708,negative,1 month,fluoxetine,,0
+709,negative,7 days,fluoxetine,,0
+710,negative,3 weeks tapering off,fluoxetine,40mg,0
+711,negative,2 months,fluoxetine,unknown,0
+712,negative,5 years,fluoxetine,40mg,0
+713,negative,2 years,sertraline,200mg,21
+714,negative,unknown,fluoxetine,unknown,0
+715,negative,not specified,fluoxetine,not specified,0
+716,negative,not specified,fluoxetine,not specified,0
+717,negative,around a month,fluoxetine,,0
+718,negative,1.5 weeks,fluoxetine,,0
+719,negative,1 year,paroxetine,25mg,0
+720,neutral,,paroxetine,,0
+721,negative,6 years,paroxetine,50mg,30
+722,negative,over two weeks,paroxetine,10 mg,0
+723,negative,5 days,paroxetine,30mg,0
+724,negative,1 week,paroxetine,not specified,0
+725,negative,November to present,paroxetine,20mg,0
+726,negative,not specified,paroxetine,not specified,0
+727,negative,few days,paroxetine,20mg,0
+728,negative,not specified,paroxetine,not specified,0
+729,negative,1 month,paroxetine,20mg,0
+730,negative,unknown,paroxetine,unknown,0
+731,negative,unknown,clomipramine,unknown,0
+732,negative,not specified,paroxetine,not specified,0
+733,negative,1 day,paroxetine,20mg,21
+734,negative,4 years,paroxetine,20mg,0
+735,negative,unknown,paroxetine,unknown,0
+736,neutral,unknown,paroxetine,unknown,0
+737,negative,over a year,paroxetine,50mg,0
+738,negative,20 years,sertraline,150 mg,0
+739,negative,4 days,paroxetine,,0
+740,negative,1.5 months,paroxetine,5-20 mg,0
+741,negative,6 days,paroxetine,12.5 mg,0
+742,negative,two months,paroxetine,,0
+743,negative,8 months,sertraline,not specified,0
+744,negative,10 years,paroxetine,low dose,0
+745,negative,long term,paroxetine,not specified,0
+746,negative,1 year,escitalopram,20mg,0
+747,negative,unknown,paroxetine,20mg,0
+748,negative,10 years,fluoxetine,unspecified,23
+749,negative,1 week,sertraline,100mg,0
+750,negative,unknown,sertraline,unknown,0
+751,neutral,not specified,sertraline,50 mg,0
+752,negative,4 months,sertraline,200mg,0
+753,negative,long time,sertraline,,0
+754,negative,1 day,sertraline,,0
+755,negative,6 years,sertraline,125mg,0
+756,neutral,less than a week,sertraline,not specified,0
+757,negative,1 month,sertraline,,0
+758,negative,1.5 years,sertraline,75 mg,0
+759,negative,first day,sertraline,not specified,0
+760,negative,2 days,sertraline,,0
+761,negative,6 days,sertraline,25mg,0
+762,negative,6 weeks,sertraline,25mg for the first 10 days and then 50mg daily,0
+763,negative,1.5 months,sertraline,50 mg,29
+764,negative,tapered off in march of this year,sertraline,not specified,0
+765,negative,few hours,sertraline,not specified,0
+766,negative,n/a,sertraline,n/a,0
+767,negative,12 months,sertraline,50 mg to 200 mg,0
+768,negative,1 week,sertraline,50mg,0
+769,negative,several years,sertraline,not specified,0
+770,negative,few months,sertraline,50mg,0
+771,negative,1 week,sertraline,25mg,0
+772,negative,over 3 months,sertraline,50mg,0
+773,negative,a while,sertraline,,0
+774,negative,not specified,sertraline,not specified,0
+775,negative,cross-tapering,sertraline,not specified,21
+776,negative,,sertraline,,0
+777,negative,5 months,sertraline,100mg,0
+778,negative,6 years,sertraline,25 mg,0
+779,negative,2 months,sertraline,50 mg,0
+780,negative,10 weeks,sertraline,,0
+781,negative,not specified,sertraline,100mg in the morning 25mg at night,0
+782,negative,not specified,sertraline,not specified,0
+783,negative,long term,sertraline,not specified,0
+784,negative,3 weeks,sertraline,15mg,0
+785,negative,6 years,sertraline,25mg,34
+786,negative,3 months,sertraline,50mg,0
+787,negative,4 days,bupropion,150mg,21
+788,negative,7 years,bupropion,not specified,0
+789,negative,7 months,sertraline,50mg,26
+790,negative,one year,sertraline,not specified,0
+791,negative,9 months,sertraline,75 mg,0
+792,negative,6 days,sertraline,25mg,0
+793,negative,20 years,sertraline,150 mg,0
+794,neutral,not specified,sertraline,150mg,0
+795,negative,2 years for zoloft; 9 months for prozac,sertraline,50mg,21
+796,negative,3 years,aripiprazole,1.5 mg,26
+797,negative,,sertraline,,0
+798,negative,not specified,sertraline,not specified,0
+799,negative,2 days,sertraline,100mg,21
+800,negative,unknown,sertraline,unknown,0
+801,negative,1 day,sertraline,unknown,0
+802,negative,recently prescribed,sertraline,not specified,21
+803,negative,unspecified,sertraline,300 mg,0
+804,negative,not specified,sertraline,not specified,0
+805,negative,not specified,sertraline,not specified,0
+806,negative,2 weeks,sertraline,,0
+807,negative,1 month,fluoxetine,low,0
+808,negative,4-5 years,duloxetine,30mg,0
+809,negative,not specified,duloxetine,not specified,0
+810,negative,2 days,duloxetine,120mg,0
+811,positive,unknown,duloxetine,30mg,0
+812,negative,unspecified,duloxetine,60mg,0
+813,negative,few weeks,duloxetine,,0
+814,negative,0 hours,duloxetine,60mg,0
+815,negative,less than one day,duloxetine,unspecified,0
+816,negative,1 month,duloxetine,low,0
+817,negative,2 days,duloxetine,unknown,0
+818,negative,1 month,fluoxetine,low doses,0
+819,negative,not specified,duloxetine,not specified,0
+820,negative,2.5 months,duloxetine,60 mgs then 30 mgs,0
+821,negative,5 weeks,duloxetine,90 mg,0
+822,negative,3 days,duloxetine,20mg twice a day,0
+823,negative,4 days,duloxetine,,0
+824,negative,9 days,duloxetine,,0
+825,negative,four nights,duloxetine,30mg,0
+826,positive,not specified,duloxetine,30mg,0
+827,negative,1 week and 2 days,duloxetine,,0
+828,negative,several years,duloxetine,,0
+829,negative,a few weeks,duloxetine,,0
+830,negative,over a month,duloxetine,120 mg,0
+831,negative,6 months,duloxetine,20 mg,0
+832,negative,over a year,duloxetine,30mg,0
+833,negative,2 days,duloxetine,30 mg,0
+834,negative,three to four weeks,duloxetine,,0
+835,negative,6 years,duloxetine,60mg,28
+836,negative,7 years,duloxetine,,0
+837,negative,1 week at 90 mg,duloxetine,90 mg,0
+838,negative,unknown,duloxetine,unknown,0
+839,negative,2-3 years,duloxetine,100mg,0
+840,negative,3 months,duloxetine,60mg,21
+841,negative,today,venlafaxine,,0
+842,negative,less than 1 day,venlafaxine,37.5 mg and 75 mg,0
+843,negative,4 months,venlafaxine,not specified,0
+844,negative,6 months,venlafaxine,225mg,0
+845,negative,2 months,venlafaxine,,0
+846,negative,4 days,venlafaxine,,0
+847,negative,11 days,venlafaxine,75 mg,0
+848,negative,not specified,venlafaxine,not specified,0
+849,negative,unspecified,bupropion,200 mg,0
+850,negative,1.5 years,venlafaxine,37mg,29
+851,negative,three years,venlafaxine,,0
+852,negative,less than 1 week,venlafaxine,doubled,0
+853,negative,10 weeks,venlafaxine,75mg,0
+854,negative,over 4 years,venlafaxine,150mg,0
+855,negative,unintentional,venlafaxine,not specified,0
+856,negative,6 months,venlafaxine,150mg,0
+857,negative,about a year,venlafaxine,,0
+858,negative,not specified,duloxetine,60mg,0
+859,negative,1 year,venlafaxine,unknown,0
+860,negative,12 years,venlafaxine,,30
+861,negative,2 weeks,venlafaxine,not specified,0
+862,neutral,not specified,venlafaxine,not specified,0
+863,negative,2 years,venlafaxine,,0
+864,negative,1.5 years,venlafaxine,,0
+865,negative,3 to 4 weeks,venlafaxine,100 mg,0
+866,negative,two years,venlafaxine,75mg,0
+867,negative,,venlafaxine,225 mg,0
+868,negative,,venlafaxine,,0
+869,negative,2 weeks,venlafaxine,75mg,0
+870,negative,2.5 years,venlafaxine,,0
+871,negative,a few weeks,venlafaxine,,0
+872,negative,6 months,venlafaxine,225mg,0
+873,negative,1 month,venlafaxine,75mg to 150mg,0
+874,negative,11 days,venlafaxine,75 mg,0
+875,negative,unknown,bupropion,100 mg - 200 mg,0
+876,negative,unknown,venlafaxine,112.5mg,0
+877,negative,about a year,venlafaxine,112.5mg,0
+878,negative,2 weeks,venlafaxine,,0
+879,negative,not specified,venlafaxine,not specified,0
+880,neutral,1 day,venlafaxine,not specified,0
+881,negative,6 weeks,venlafaxine,not specified,22
+882,negative,10 weeks,venlafaxine,75mg,0
+883,negative,4 months,desvenlafaxine,,0
+884,negative,4 years,venlafaxine,112.5mg,0
+885,negative,1 year,venlafaxine,unspecified,0
+886,negative,four weeks,venlafaxine,1050mg,0
+887,negative,unknown,venlafaxine,unknown,0
+888,negative,over a year,venlafaxine,lowest possible dose,0
+889,negative,9 months,venlafaxine,75mg to 150mg,24
+890,negative,9 months,venlafaxine,150 mg,0
+891,negative,not specified,venlafaxine,not specified,0
+892,negative,9 months,venlafaxine,75mg to 150mg,24
+893,negative,1 year,venlafaxine,200mg,0
+894,negative,one year,venlafaxine,,0
+895,negative,2 weeks,bupropion,150 mg,25
+896,negative,3 to 4 weeks,venlafaxine,225 mg,0
+897,negative,9 months,trazodone,25mg,0
+898,negative,not specified,trazodone,not specified,0
+899,negative,a little more than a week,trazodone,150mg,0
+900,negative,5 days,trazodone,100mg,0
+901,negative,over a month,escitalopram,50mg trazodone (1/3 of 150mg),0
+902,negative,1.5 years,fluoxetine,20mg,0
+903,negative,1 year and 3 weeks,trazodone,50mg,0
+904,negative,20 yrs,citalopram,20 mg,29
+905,negative,2 weeks,trazodone,50mg,0
+906,negative,3 months,fluoxetine,10mg,0
+907,negative,recently started,trazodone,50mg,0
+908,negative,3 days,bupropion,100mg,0
+909,negative,years,bupropion,300xl,0
+910,negative,2 weeks,bupropion,300mg,0
+911,negative,3 weeks,bupropion,150mg,23
+912,negative,unspecified,bupropion,300mg,0
+913,neutral,1 day,bupropion,150 mg,0
+914,negative,2 years,bupropion,,0
+915,negative,,bupropion,,0
+916,negative,2 weeks,bupropion,150 mg,25
+917,negative,1 year,bupropion,300mg,0
+918,neutral,not specified,bupropion,not specified,0
+919,negative,not specified,bupropion,not specified,26
+920,negative,recently,bupropion,not specified,0
+921,negative,less than a year,bupropion,not specified,0
+922,negative,2 months,bupropion,300mg,20
+923,negative,four years,bupropion,,0
+924,negative,not specified,bupropion,not specified,0
+925,negative,1 year,bupropion,100 mg,0
+926,negative,1 month,bupropion,,0
+927,negative,not specified,bupropion,300mg,0
+928,negative,15 days,bupropion,,0
+929,negative,less than a week,bupropion,not specified,0
+930,negative,5 weeks,bupropion,150mg,0
+931,neutral,unspecified,bupropion,36 mg,0
+932,negative,20 years,bupropion,,0
+933,negative,,bupropion,,0
+934,negative,10 months,bupropion,150mg 10mg,0
+935,neutral,2 days,bupropion,100 mg,0
+936,negative,1 day,bupropion,150mg,0
+937,negative,2 days,bupropion,150 mg,0
+938,negative,not specified,bupropion,150 mg,0
+939,negative,7 years,sertraline,50mg,0
+940,negative,unknown,bupropion,100 mg,0
+941,neutral,4 days,bupropion,100 mg,0
+942,negative,4 days total on wellbutrin 1 month on lexapro 2 weeks then 1 month on zoloft,bupropion,150mg,21
+943,neutral,5 days,bupropion,100 mg,0
+944,neutral,2 days,bupropion,100 mg,0
+945,negative,2 days,bupropion,100 sr,0
+946,neutral,unknown,bupropion,1.5mg,0
+947,negative,5 years,bupropion,40mg,0
+948,negative,1 week,bupropion,150mg,31
+949,negative,18 days,bupropion,150mg,30
+950,negative,11 days,bupropion,150 mg,0
+951,negative,about a week,bupropion,150mg xl,0
+952,negative,unknown,venlafaxine,unknown,0
+953,neutral,1 month,amitriptyline,10mg 3 times daily,0
+954,negative,5 months,amitriptyline,50mg,0
+955,negative,2.5 weeks,amitriptyline,25 mg,0
+956,negative,5 weeks,amitriptyline,10mg,0
+957,negative,not specified,amitriptyline,10 mg,0
+958,negative,around 1 year,amitriptyline,25mg,0
+959,negative,unknown,amitriptyline,50 mg,0
+960,negative,less than a week,amitriptyline,10mg,0
+961,negative,20 days,amitriptyline,not specified,0
+962,negative,few months,amitriptyline,10mg,0
+963,negative,less than 1 month,sertraline,not specified,18
+964,negative,3 and a half weeks,clomipramine,125mg,0
+965,negative,not specified,clomipramine,not specified,0
+966,negative,5 months,clomipramine,150mg,0
+967,negative,short period of time,fluvoxamine,not specified,0
+968,negative,1 week,bupropion,200mg,0
+969,negative,2 weeks,aripiprazole,2mg,0
+970,negative,unspecified,fluvoxamine,unspecified,0
+971,negative,not specified,clomipramine,not specified,0
+972,negative,1 dose,clomipramine,12.5mg,0
+973,negative,1.5 weeks,clomipramine,275mg,0
+974,negative,1.5 weeks,clomipramine,,0
+975,negative,unknown,clomipramine,one-half less pill,0
+976,negative,few months,paroxetine,,0
+977,negative,4-5 years,imipramine,not specified,22
+978,negative,12 weeks,vortioxetine,,0
+979,negative,4 years,wellbutrin,150mg,33
+980,negative,3 years,fluoxetine,,20
+981,negative,3 years,parnate,not specified,32
+982,negative,8 months,escitalopram,30mg,0
+983,negative,not specified,clomipramine,not specified,0
+984,negative,7 weeks,clomipramine,200mg,0
+985,negative,one year,clomipramine,,0
+986,negative,1 week,clomipramine,higher dosage,0
+987,negative,unknown,clomipramine,unknown,0
+988,negative,4 years,clomipramine,,0
+989,negative,8 months,clomipramine,,0
+990,negative,not specified,clomipramine,not specified,0
+991,negative,unknown,clomipramine,unknown,0
+992,negative,not specified,clomipramine,not specified,0
+993,negative,1 week,bupropion,200mg,0
+994,negative,6 months,fluoxetine,,16
+995,negative,ongoing,bupropion,300 mg,0
+996,negative,9 weeks,clomipramine,not specified,22
+997,negative,first day,sertraline,,0
+998,negative,10 years,sertraline,not specified,0
+999,negative,not specified,clomipramine,not specified,0
+1000,negative,2 years,fluoxetine,60mg,0
+1001,negative,4 days,doxepin,,0
+1002,negative,2 weeks,doxepin,,0
+1003,negative,4 months,doxepin,10mg,0
+1004,negative,not specified,doxepin,not specified,0
+1005,negative,1 year,escitalopram,20mg,0
+1006,negative,over a year,doxepin,,24
+1007,negative,a few months,doxepin,75 mg,0
+1008,negative,6 years,doxepin,,0
+1009,negative,6 years,lamotrigine,,21
+1010,negative,6 years,bupropion,,0
+1011,negative,2 weeks,trazodone,50mg,0
+1012,negative,one year,citalopram,,0
+1013,negative,4-5 years,imipramine,20 mg,22
+1014,negative,7 weeks,imipramine,,32
+1015,negative,8 months,bupropion,not specified,0
+1016,negative,just started,nortriptyline,,0
+1017,negative,2 weeks,nortriptyline,10 mg,0
+1018,negative,11 years,nortriptyline,25 mg,62
+1019,negative,10 days,nortriptyline,10mg,0
+1020,negative,10 days,nortriptyline,10mg,0
+1021,negative,4-5 years,fluoxetine,20 mg,22
+1022,negative,unknown,nortriptyline,150mg,0
+1023,negative,12 years,citalopram,,0
+1024,negative,since 2019,lithium,not specified,40
+1025,negative,currently trying lamictal,lamotrigine,100mg,0
+1026,negative,couple months,nortriptyline,not specified,0
+1027,negative,1.5 years,nortriptyline,75mg,0
+1028,negative,3 years,nortriptyline,not specified,29
+1029,negative,ten years,venlafaxine,not specified,0
+1030,negative,3 weeks,nortriptyline,10mg,0
+1031,negative,1 month,aripiprazole,2mg,0
+1032,negative,ten years,venlafaxine,not specified,0
+1033,negative,1.5 months,nortriptyline,not specified,0
+1034,negative,6 years,duloxetine,60mg,28
+1035,negative,not specified,mirtazapine,15mg,0
+1036,negative,five weeks,mirtazapine,30mg,0
+1037,negative,3 days,mirtazapine,not specified,0
+1038,negative,one year,mirtazapine,unknown,18
+1039,negative,3 days,mirtazapine,15 mg,26
+1040,negative,1 day,escitalopram,10mg,0
+1041,negative,two years and some months,mirtazapine,30mg,0
+1042,negative,recently changed,mirtazapine,not specified,0
+1043,positive,1 week,mirtazapine,,0
+1044,negative,3 months,mirtazapine,15mg,0
+1045,negative,few months,mirtazapine,30 mg,0
+1046,negative,not specified,mirtazapine,not specified,0
+1047,negative,5 weeks,mirtazapine,not specified,0
+1048,negative,not specified,sertraline,not specified,18
+1049,negative,1.5 years,mirtazapine,30 mg,0
+1050,negative,not specified,mirtazapine,not specified,0
+1051,negative,1 year,mirtazapine,7.5 mg,0
+1052,negative,unintentional,venlafaxine,not specified,0
+1053,positive,unknown,mirtazapine,15 mg,0
+1054,negative,not specified,mirtazapine,not specified,0
+1055,negative,not specified,mirtazapine,15mg,0
+1056,negative,about a month,mirtazapine,15 mg,0
+1057,negative,two weeks,mirtazapine,15 mg for four days then 30 mg,0
+1058,negative,couple of months,mirtazapine,15mg,0
+1059,negative,from october 2021 to july 2023,mirtazapine,,0
+1060,negative,89 days,mirtazapine,30mg,0
+1061,negative,3 days,mirtazapine,15mg,0
+1062,negative,3 months,mirtazapine,30mg,0
+1063,negative,not specified,mirtazapine,15mg,0
+1064,negative,not specified,mirtazapine,15mg,0
+1065,negative,not specified,mirtazapine,not specified,21
+1066,negative,3 days,sertraline,40mg,0
+1067,negative,around a year,mirtazapine,7.5,0
+1068,negative,not specified,mirtazapine,15mg,0
+1069,negative,4 days,mirtazapine,15mg,0
+1070,negative,varied with multiple episodes,mirtazapine,15 30 7.5,0
+1071,neutral,4 days,phenelzine,30 mg,0
+1072,neutral,,phenelzine,,0
+1073,negative,a couple of weeks,phenelzine,30mg,0
+1074,negative,not specified,phenelzine,not specified,0
+1075,negative,unspecified,fluoxetine,unspecified,0
+1076,negative,7 years,phenelzine,sub therapeutic level,50
+1077,neutral,currently on,escitalopram,as needed,0
+1078,negative,3 months,nortriptyline,75mg,0
+1079,negative,years,selegiline,10mg,20
+1080,negative,63 days,selegiline,small dose,0
+1081,negative,35 years,lithium,600mg,58
+1082,negative,not specified,quetiapine,12.5 mg,0
+1083,negative,8 months,quetiapine,low,35
+1084,negative,not specified,sertraline,not specified,0
+1085,negative,2 years,quetiapine,not specified,0
+1086,negative,years,fluoxetine,not specified,0
+1087,negative,2 years,quetiapine,,0
+1088,negative,2 days,mirtazapine,15 mg,0
+1089,negative,1 year,quetiapine,20 mg,20
+1090,negative,not specified,mirtazapine,45mg,0
+1091,negative,not specified,quetiapine,not specified,0
+1092,negative,not specified,quetiapine,200 mg,0
+1093,negative,5 weeks,quetiapine,50 mg,0
+1094,negative,1 day,quetiapine,50mg,0
+1095,neutral,unknown,quetiapine,50 mg,0
+1096,negative,unknown,quetiapine,400mg,0
+1097,negative,2 years,quetiapine,not specified,0
+1098,negative,one week,quetiapine,75mg,0
+1099,negative,3 months,quetiapine,500 mg,0
+1100,negative,approximately 1 year,quetiapine,20 mg,20
+1101,negative,recently started,sertraline,200mg,40
+1102,negative,twenty years,esketamine,not specified,0
+1103,negative,2 years,ketamine,weekly and monthly treatments,0
+1104,negative,2 years,dexamphetamine,2g,0
+1105,negative,three years,esketamine,,0
+1106,negative,a few months,escitalopram,not specified,0
+1107,neutral,unspecified,fluoxetine,unspecified,0
+1108,negative,16 years,sertraline,,20
+1109,negative,6 months,ketamine,1 mg,0
+1110,negative,14 antidepressants,esketamine,,0
+1111,negative,12+ years,bupropion,not specified,0
+1112,negative,20 years,esketamine,,0
+1113,negative,unknown,esketamine,unknown,0
+1114,negative,many medications,esketamine,unknown,0
+1115,negative,less than 3 months,esketamine,not specified,20
+1116,negative,unknown,esketamine,unknown,40
+1117,negative,not specified,esketamine,not specified,0
+1118,negative,two years,ketamine,lower dose,0
+1119,negative,2 weeks,ketamine,twice the initial amount,30
+1120,negative,13 months,ketamine,,0
+1121,negative,1 month,moclobemide,300mg,0
+1122,negative,on and off,citalopram,20mg,0
+1123,negative,22 years,sertraline,20mg,48
+1124,negative,7 years,escitalopram,10mg,0
