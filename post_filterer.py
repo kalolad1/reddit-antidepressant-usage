@@ -56,8 +56,11 @@ def main() -> None:
     collector = post_collector.RedditPostCollector()
     SUBREDDITS = ["mentalhealth", "depression"]
     DAYS = 1000
-    SUBREDDIT_POST_LIMIT = 35
+    SUBREDDIT_POST_LIMIT = 2
     KEYWORDS = drugs.get_antidepressant_search_keywords()
+
+    # TODO: Remove this line, only for testing
+    KEYWORDS = KEYWORDS[:2]
 
     posts = collector.collect_posts(SUBREDDITS, SUBREDDIT_POST_LIMIT, DAYS, KEYWORDS)
     print(f"Total posts collected: {len(posts)}")

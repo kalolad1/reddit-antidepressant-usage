@@ -1,6 +1,7 @@
 from typing import Any
 
 import pandas as pd
+import tableone
 
 import matplotlib.pyplot as plt  # type: ignore[import-not-found]
 import scienceplots  # type: ignore[import-not-found]
@@ -14,6 +15,79 @@ def read_posts_from_csv_file(file_path: str) -> pd.DataFrame:
     return pd.read_csv(file_path)
 
 
+def create_demographics_by_sentiment_table(data: pd.DataFrame) -> None:
+    data = data.copy()
+
+    columns = ["age", "gender", "duration_of_treatment"]
+    groupby = "sentiment"
+    categorical = ["duration_of_treatment", "gender"]
+    continuous = ["age"]
+    nonnormal = ["age"]
+    rename = {
+        "age": "Age",
+        "gender": "Gender",
+        "duration_of_treatment": "Duration of Treatment",
+        "sentiment": "Sentiment",
+    }
+
+    # Titlecase the sentiment column for better readability
+    data["sentiment"] = data["sentiment"].str.title()
+    for column in columns:
+        if column == "age":
+            continue
+        data[column] = data[column].str.title()
+
+    table = tableone.TableOne(
+        data,
+        columns=columns,
+        categorical=categorical,
+        continuous=continuous,
+        groupby=groupby,
+        nonnormal=nonnormal,
+        rename=rename,
+        pval=False,
+    )
+
+    table.to_html("figures/demographics_by_sentiment.html")
+
+
+def create_demographics_by_drug_table(data: pd.DataFrame) -> Any:
+    data = data.copy()
+
+    columns = ["age", "gender", "duration_of_treatment", "sentiment"]
+    groupby = "drug"
+    categorical = ["duration_of_treatment", "gender", "sentiment"]
+    continuous = ["age"]
+    nonnormal = ["age"]
+    rename = {
+        "age": "Age",
+        "gender": "Gender",
+        "duration_of_treatment": "Duration of Treatment",
+        "sentiment": "Sentiment",
+        "drug": "Drug",
+    }
+
+    # Titlecase for better readability
+    data["drug"] = data["drug"].str.title()
+    for column in columns:
+        if column == "age":
+            continue
+        data[column] = data[column].str.title()
+
+    table = tableone.TableOne(
+        data,
+        columns=columns,
+        categorical=categorical,
+        continuous=continuous,
+        groupby=groupby,
+        nonnormal=nonnormal,
+        rename=rename,
+        pval=False,
+    )
+
+    table.to_html("figures/demographics_by_drug.html")
+
+
 def create_sentiment_analysis_comparative_bar_graph(data: pd.DataFrame) -> None:
     # Group the data by drug and sentiment
     grouped_data = data.groupby(["drug", "sentiment"]).size().unstack()
@@ -23,9 +97,14 @@ def create_sentiment_analysis_comparative_bar_graph(data: pd.DataFrame) -> None:
     grouped_data["positive_percentage"] = (
         grouped_data["positive"] / grouped_data["total"] * 100
     )
-    grouped_data["neutral_percentage"] = (
-        grouped_data["neutral"] / grouped_data["total"] * 100
-    )
+    try:
+        grouped_data["neutral_percentage"] = (
+            grouped_data["neutral"] / grouped_data["total"] * 100
+        )
+    except KeyError:
+        grouped_data["neutral"] = 0
+        grouped_data["neutral_percentage"] = 0
+
     grouped_data["negative_percentage"] = (
         grouped_data["negative"] / grouped_data["total"] * 100
     )
@@ -50,27 +129,10 @@ def create_sentiment_analysis_comparative_bar_graph(data: pd.DataFrame) -> None:
     plt.savefig("figures/sentiment_analysis_comparative_bar_graph_top_10.png", dpi=300)
 
 
-def create_post_stats_table(data: pd.DataFrame) -> Any:
-    grouped_data = data.groupby(["drug", "sentiment"]).size().unstack()
-    grouped_data["total"] = grouped_data.sum(axis=1)
-    grouped_data = grouped_data.fillna(0).astype(int)
-    grouped_data.loc["total"] = grouped_data.sum()
-
-    fig, ax = plt.subplots()
-    ax.axis("off")
-    ax.table(
-        cellText=grouped_data.values,
-        colLabels=grouped_data.columns,
-        rowLabels=grouped_data.index,
-        loc="center",
-    )
-
-    plt.savefig("figures/sentiment_analysis_count_table.png", dpi=300)
-
-
 def main():
     data = read_posts_from_csv_file(DATA_FILE_PATH)
-    create_post_stats_table(data)
+    create_demographics_by_sentiment_table(data)
+    create_demographics_by_drug_table(data)
     create_sentiment_analysis_comparative_bar_graph(data)
 
 
