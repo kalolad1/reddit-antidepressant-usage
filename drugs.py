@@ -1,6 +1,7 @@
 import enum
 from typing import List
 
+
 class AntidepressantClass(enum.Enum):
     SSRI = 1
     SNRI = 2
@@ -31,9 +32,7 @@ class Drug:
 def create_list_of_antidepressants() -> List[Drug]:
     antidepressants = [
         Drug("citalopram", ["celexa", "cipramil"], AntidepressantClass.SSRI),
-        Drug(
-            "escitalopram", ["lexapro", "cipralex"], AntidepressantClass.SSRI
-        ),
+        Drug("escitalopram", ["lexapro", "cipralex"], AntidepressantClass.SSRI),
         Drug("fluoxetine", ["prozac", "sarafem"], AntidepressantClass.SSRI),
         # Drug("fluvoxamine", ["luvox", "faverin"], AntidepressantClass.SSRI),
         Drug("paroxetine", ["paxil", "seroxat"], AntidepressantClass.SSRI),
@@ -44,9 +43,7 @@ def create_list_of_antidepressants() -> List[Drug]:
         # Drug(
         #     "milnacipran", ["ixel", "savella", "milnaneurax"], AntidepressantClass.SNRI
         # ),
-        Drug(
-            "venlafaxine", ["effexor", "trevilor"], AntidepressantClass.SNRI
-        ),
+        Drug("venlafaxine", ["effexor", "trevilor"], AntidepressantClass.SNRI),
         # Drug("vilazodone", ["viibryd"], AntidepressantClass.SMS),
         # Drug(
         #     "vortioxetine", ["trintellix", "brintellix"], AntidepressantClass.SMS
@@ -60,9 +57,7 @@ def create_list_of_antidepressants() -> List[Drug]:
         #     "teniloxazine", ["lucelan", "metatone"], AntidepressantClass.NRI
         # ),
         # Drug("viloxazine", ["vivalan"], AntidepressantClass.NRI),
-        Drug(
-            "bupropion", ["wellbutrin", "elontril"], AntidepressantClass.NDRI
-        ),
+        Drug("bupropion", ["wellbutrin", "elontril"], AntidepressantClass.NDRI),
         Drug("amitriptyline", ["elavil", "endep"], AntidepressantClass.TCA),
         # Drug(
         #     "amitriptylinoxide",
@@ -83,9 +78,7 @@ def create_list_of_antidepressants() -> List[Drug]:
         #     "melitracen", ["dixeran", "melixeran", "trausabun"], AntidepressantClass.TCA
         # ),
         # Drug("nitroxazepine", ["sintamil"], AntidepressantClass.TCA),
-        Drug(
-            "nortriptyline", ["pamelor", "aventyl"], AntidepressantClass.TCA
-        ),
+        Drug("nortriptyline", ["pamelor", "aventyl"], AntidepressantClass.TCA),
         # Drug(
         #     "noxiptiline", ["agedal", "elronon", "nogedal"], AntidepressantClass.TCA
         # ),
@@ -101,9 +94,7 @@ def create_list_of_antidepressants() -> List[Drug]:
         Drug("isocarboxazid", ["marplan"], AntidepressantClass.MAOI),
         Drug("phenelzine", ["nardil"], AntidepressantClass.MAOI),
         # Drug("tranylcypromine", ["parnate"], AntidepressantClass.MAOI),
-        Drug(
-            "selegiline", ["eldepryl", "zelapar", "emsam"], AntidepressantClass.MAOI
-        ),
+        Drug("selegiline", ["eldepryl", "zelapar", "emsam"], AntidepressantClass.MAOI),
         # Drug("metralindole", ["inkazan"], AntidepressantClass.MAOI),
         # Drug("moclobemide", ["aurorix", "manerix"], AntidepressantClass.MAOI),
         # Drug("pirlindole", ["pirazidol"], AntidepressantClass.MAOI),
@@ -117,9 +108,7 @@ def create_list_of_antidepressants() -> List[Drug]:
         # Drug(
         #     "lurasidone", ["latuda"], AntidepressantClass.ATYPICAL_ANTIPSYCHOTICS
         # ),
-        Drug(
-            "quetiapine", ["seroquel"], AntidepressantClass.ATYPICAL_ANTIPSYCHOTICS
-        ),
+        Drug("quetiapine", ["seroquel"], AntidepressantClass.ATYPICAL_ANTIPSYCHOTICS),
         # Drug("agomelatine", ["valdoxan"], AntidepressantClass.OTHER),
         # Drug(
         #     "brexanolone", ["allopregnanolone", "zulresso"], AntidepressantClass.OTHER

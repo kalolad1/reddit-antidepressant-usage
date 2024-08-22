@@ -1,6 +1,8 @@
 post_id,sentiment,adverse_effects,duration_of_treatment,drug,dose,age,gender
-0,positive,"nausea",less than one month,citalopram,,30,female
-1,negative,"insomnia,dizziness,sweating",less than one month,citalopram,10mg,,female
-2,negative,"",more than one year,citalopram,40mg,,male
-3,negative,"nausea,diarrhea",less than one month,citalopram,20mg,,female
-4,negative,"drowsiness",one to six months,citalopram,,,male
+20b0baa47f1e45802ab92f7943a7000cc47617daaf87d8f16ecd9863362c0b34,positive,bruising,less than one month,citalopram,,,female
+a0a957215de7024bcda162e55f33e50598a3dac859aa78aac65bcb8df0d7f29e,negative,insomnia,dizziness,sweating,more than one year,citalopram,10mg,,male
+83da34fed7e134a88eda836c513804bae73159b28934d4d6ca7025f0cb72cea5,negative,,more than one year,citalopram,40mg,,male
+b29adaa1ce532953c70037b366f5eca22c6450ceb6b739487aebbd0ae45f4f75,negative,nausea,diarrhea,less than one month,citalopram,20mg,,female
+c7f5eac75da0711bf8f3fd82329e3843a8a0be409ecb52390dc4e4215c8ee478,negative,,less than one month,citalopram,10 mg,,male
+c175f03202fb0ea597d2970adb1be328b56d9b2c69d39bc638863ba1f2cc5c9a,negative,drowsiness,one to six months,citalopram,,,female
+eec17942eb753c101fa64a117aa4de5bab36d1bab68dc33d51d536fe9835021b,negative,,more than one year,citalopram,,,female

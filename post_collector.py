@@ -4,6 +4,7 @@ from typing import Dict, List
 import praw  # type: ignore[import-not-found]
 
 import drugs
+from post import Post
 
 CLIENT_ID = "2PNKUUZ7U8J435ZZF_f19g"
 CLIENT_SECRET = "lwnfx-95lv-kQpj39vioHC_Al9_pUw"
@@ -27,7 +28,7 @@ class RedditPostCollector:
         subreddit_post_limit: int,
         days: int,
         keywords: List[str],
-    ) -> List[Dict[str, str]]:
+    ) -> List[Post]:
         end_time = datetime.datetime.now(datetime.UTC)
         start_time = end_time - datetime.timedelta(days=days)
 
@@ -42,9 +43,11 @@ class RedditPostCollector:
                         submission.created_utc, datetime.UTC
                     )
                     if start_time <= post_time <= end_time:
-                        collected_posts.append(
-                            {"title": submission.title, "selftext": submission.selftext}
+                        new_post = Post(
+                            title=submission.title,
+                            content=submission.selftext,
                         )
+                        collected_posts.append(new_post)
                         print(collected_posts[-1])
-
+        
         return collected_posts
