@@ -1,5 +1,5 @@
 import datetime
-from typing import Dict, List
+from typing import Dict, Generator, List
 
 import praw  # type: ignore[import-not-found]
 
@@ -12,8 +12,13 @@ USER_AGENT = "test_user_agent"
 
 
 class RedditPostCollector:
+
     def __init__(
         self,
+        subreddits: List[str] = ["mentalhealth", "depression"],
+        subreddit_post_limit: int = 2,
+        days: int = 1000,
+        keywords: List[str] = drugs.get_antidepressant_search_keywords()[:4],
         client_id: str = CLIENT_ID,
         client_secret: str = CLIENT_SECRET,
         user_agent: str = USER_AGENT,
@@ -21,23 +26,19 @@ class RedditPostCollector:
         self.reddit = praw.Reddit(
             client_id=client_id, client_secret=client_secret, user_agent=user_agent
         )
+        self.subreddits = subreddits
+        self.subreddit_post_limit = subreddit_post_limit
+        self.days = days
+        self.keywords = keywords
 
-    def collect_posts(
-        self,
-        subreddits: List[str],
-        subreddit_post_limit: int,
-        days: int,
-        keywords: List[str],
-    ) -> List[Post]:
+    def collect_posts(self) -> Generator[Post, None, None]:
         end_time = datetime.datetime.now(datetime.UTC)
-        start_time = end_time - datetime.timedelta(days=days)
+        start_time = end_time - datetime.timedelta(days=self.days)
 
-        collected_posts = []
-
-        for subreddit in subreddits:
-            for keyword in keywords:
+        for subreddit in self.subreddits:
+            for keyword in self.keywords:
                 for submission in self.reddit.subreddit(subreddit).search(
-                    keyword, limit=subreddit_post_limit
+                    keyword, limit=self.subreddit_post_limit
                 ):
                     post_time = datetime.datetime.fromtimestamp(
                         submission.created_utc, datetime.UTC
@@ -47,7 +48,4 @@ class RedditPostCollector:
                             title=submission.title,
                             content=submission.selftext,
                         )
-                        collected_posts.append(new_post)
-                        print(collected_posts[-1])
-        
-        return collected_posts
+                        yield new_post

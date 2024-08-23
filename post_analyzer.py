@@ -9,7 +9,7 @@ import pydantic
 import transformers  # type: ignore[import-not-found]
 
 from post import Post, Analysis, AdverseEffect, DurationOfTreatment, Gender
-from mongodb import mongodb_client
+from mongodb_helper import mongodb_client
 
 dotenv.load_dotenv()
 client = openai.OpenAI(  # type: ignore[attr-defined]
