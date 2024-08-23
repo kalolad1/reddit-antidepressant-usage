@@ -33,3 +33,7 @@ def write_post_to_mongodb(post: Post) -> None:
             },
         }
     )
+
+
+def post_exists_in_mongodb(post: Post) -> bool:
+    return mongodb_client.online_drug_surveillance_db.posts.find_one({"post_id": post.post_id}) is not None
