@@ -17,7 +17,6 @@ client = openai.OpenAI(  # type: ignore[attr-defined]
 
 
 def filter_post(post: Post) -> bool:
-    print(f"Filtering post: {post.title}")
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
@@ -46,10 +45,6 @@ def filter_posts(posts: List[Post]) -> List[Post]:
             ],
         )
         result = completion.choices[0].message.content.strip().lower()
-        print(post.title)
-        print(post.content)
-        print(result)
-        print("\n\n\n")
         if "yes" in result:
             filtered_posts.append(post)
     return filtered_posts
