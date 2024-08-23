@@ -166,8 +166,20 @@ def read_posts_from_csv_file(file_path: str) -> List[Post]:
     return posts
 
 
+def read_posts_from_mongodb() -> List[Post]:
+    posts = []
+    for post in mongodb_client.online_drug_surveillance_db.filtered_posts.find():
+        new_post = Post(
+            title=post["title"],
+            content=post["content"],
+        )
+        posts.append(new_post)
+    return posts
+
+
 if __name__ == "__main__":
-    posts = read_posts_from_csv_file("filtered_posts.csv")
+    # posts = read_posts_from_csv_file("filtered_posts.csv")
+    posts = read_posts_from_mongodb()
     print(f"Total posts to analyze: {len(posts)}")
 
     analyze_posts(posts)

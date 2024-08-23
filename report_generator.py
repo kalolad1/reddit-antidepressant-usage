@@ -6,6 +6,8 @@ import tableone
 import matplotlib.pyplot as plt  # type: ignore[import-not-found]
 import scienceplots  # type: ignore[import-not-found]
 
+from mongodb import mongodb_client
+
 plt.style.use("science")
 
 DATA_FILE_PATH = "analyzed_posts.csv"
@@ -13,6 +15,14 @@ DATA_FILE_PATH = "analyzed_posts.csv"
 
 def read_posts_from_csv_file(file_path: str) -> pd.DataFrame:
     return pd.read_csv(file_path)
+
+
+def read_posts_from_mongodb() -> pd.DataFrame:
+    analyses = []
+    for post in mongodb_client.online_drug_surveillance_db.analyzed_posts.find():
+        analyses.append(post["analysis"])
+
+    return pd.DataFrame(analyses)
 
 
 def create_demographics_by_sentiment_table(data: pd.DataFrame) -> None:
@@ -88,6 +98,35 @@ def create_demographics_by_drug_table(data: pd.DataFrame) -> Any:
     table.to_html("figures/demographics_by_drug.html")
 
 
+def create_drug_adverse_effect_count_table(data: pd.DataFrame) -> None:
+    # Convert the list of adverse effects to their counts
+    print(data)
+    data["adverse_effect_count"] = data["adverse_effects"].apply(len)
+
+    # Group the data by drug and calculate the average number of adverse effects per post
+    grouped_data = data.groupby("drug")["adverse_effect_count"].mean().reset_index()
+    grouped_data["adverse_effect_count"] = grouped_data["adverse_effect_count"].round(2)
+
+    # Sort the data by average number of adverse effects in descending order
+    sorted_data = grouped_data.sort_values(by="adverse_effect_count", ascending=False)
+
+    
+    # Create the table
+    table = plt.table(
+        cellText=sorted_data.values,
+        colLabels=["Drug", "Average Adverse Effects per Post"],
+        cellLoc="center",
+        loc="center",
+        
+
+
+    )    # Remove the axis
+    plt.axis("off")
+
+    # Save the table as an image
+    plt.savefig("figures/drug_adverse_effect_count_table.png", dpi=300)
+
+
 def create_sentiment_analysis_comparative_bar_graph(data: pd.DataFrame) -> None:
     # Group the data by drug and sentiment
     grouped_data = data.groupby(["drug", "sentiment"]).size().unstack()
@@ -130,10 +169,13 @@ def create_sentiment_analysis_comparative_bar_graph(data: pd.DataFrame) -> None:
 
 
 def main():
-    data = read_posts_from_csv_file(DATA_FILE_PATH)
-    create_demographics_by_sentiment_table(data)
-    create_demographics_by_drug_table(data)
-    create_sentiment_analysis_comparative_bar_graph(data)
+    # data = read_posts_from_csv_file(DATA_FILE_PATH)
+    data = read_posts_from_mongodb()
+
+    create_drug_adverse_effect_count_table(data)
+    # create_demographics_by_sentiment_table(data)
+    # create_demographics_by_drug_table(data)
+    # create_sentiment_analysis_comparative_bar_graph(data)
 
 
 if __name__ == "__main__":
