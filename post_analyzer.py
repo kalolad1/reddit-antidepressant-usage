@@ -8,7 +8,7 @@ import openai
 import pydantic
 import transformers  # type: ignore[import-not-found]
 
-from post import Post, Analysis, AdverseEffect, DurationOfTreatment, Gender
+from post import Post, AdverseEffect, DurationOfTreatment, Gender
 from mongodb_helper import mongodb_client
 
 dotenv.load_dotenv()
@@ -80,90 +80,14 @@ def get_post_characteristics(post: Post) -> Any:
 def analyze_post(post: Post) -> None:
     sentiment = get_sentiment_score(post)
     post_characteristics = get_post_characteristics(post)
-    analysis = Analysis(
-        age=post_characteristics["age"],
-        gender=post_characteristics["gender"],
-        drug=post_characteristics["drug"],
-        dose=post_characteristics["dose"],
-        adverse_effects=post_characteristics["adverse_effects"],
-        duration_of_treatment=post_characteristics["duration_of_treatment"],
-        sentiment=sentiment,
-    )
-    post.analysis = analysis
 
-
-def analyze_posts(posts: List[Post]) -> None:
-    for post in posts:
-        analyze_post(post)
-        print(post)
-
-
-def write_analyzed_posts_to_csv_file(analyzed_posts: List[Post]) -> None:
-    with open("analyzed_posts.csv", "w") as file:
-        file.write(
-            "post_id,sentiment,adverse_effects,duration_of_treatment,drug,dose,age,gender\n"
-        )
-
-        for post in analyzed_posts:
-            if post.analysis is None:
-                continue
-
-            adverse_effects = ",".join(
-                [effect.value for effect in post.analysis.adverse_effects]
-            )
-            age = str(post.analysis.age) if post.analysis.age != 0 else ""
-
-            csv_row = ",".join(
-                [
-                    post.post_id,
-                    post.analysis.sentiment,
-                    adverse_effects,
-                    post.analysis.duration_of_treatment.value,
-                    post.analysis.drug,
-                    post.analysis.dose,
-                    age,
-                    post.analysis.gender.value,
-                ]
-            )
-
-            file.write(f"{csv_row}\n")
-
-
-def write_posts_to_mongodb(posts: List[Post]) -> None:
-    mongodb_client.online_drug_surveillance_db.analyzed_posts.insert_many(
-        [
-            {
-                "title": post.title,
-                "content": post.content,
-                "post_id": post.post_id,
-                "analysis": {
-                    "sentiment": post.analysis.sentiment,
-                    "adverse_effects": [
-                        effect.value for effect in post.analysis.adverse_effects
-                    ],
-                    "duration_of_treatment": post.analysis.duration_of_treatment.value,
-                    "drug": post.analysis.drug,
-                    "dose": post.analysis.dose,
-                    "age": post.analysis.age,
-                    "gender": post.analysis.gender.value,
-                },
-            }
-            for post in posts if post.analysis is not None
-        ]
-    )
-
-
-def read_posts_from_csv_file(file_path: str) -> List[Post]:
-    posts = []
-    with open(file_path, "r") as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            new_post = Post(
-                title=row["title"],
-                content=row["content"],
-            )
-            posts.append(new_post)
-    return posts
+    post.age = post_characteristics["age"]
+    post.gender = post_characteristics["gender"]
+    post.drug = post_characteristics["drug"]
+    post.dose = post_characteristics["dose"]
+    post.duration_of_treatment = post_characteristics["duration_of_treatment"]
+    post.adverse_effects = post_characteristics["adverse_effects"]
+    post.sentiment = sentiment
 
 
 def read_posts_from_mongodb() -> List[Post]:
@@ -175,13 +99,3 @@ def read_posts_from_mongodb() -> List[Post]:
         )
         posts.append(new_post)
     return posts
-
-
-if __name__ == "__main__":
-    # posts = read_posts_from_csv_file("filtered_posts.csv")
-    posts = read_posts_from_mongodb()
-    print(f"Total posts to analyze: {len(posts)}")
-
-    analyze_posts(posts)
-    write_posts_to_mongodb(posts)
-    write_analyzed_posts_to_csv_file(posts)

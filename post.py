@@ -69,40 +69,32 @@ class Gender(enum.Enum):
     FEMALE = "female"
 
 
-class Analysis:
-    def __init__(
-        self,
-        drug: str,
-        sentiment: str,
-        age: Optional[int],
-        gender: Gender,
-        dose: str,
-        adverse_effects: List[AdverseEffect],
-        duration_of_treatment: DurationOfTreatment,
-    ):
-        self.age = age
-        self.gender = gender
-        self.drug = drug
-        self.dose = dose
-        self.adverse_effects = adverse_effects
-        self.duration_of_treatment = duration_of_treatment
-        self.sentiment = sentiment
-
-
 class Post:
+
     def __init__(
         self,
         title: str,
         content: str,
-        analysis: Optional[Analysis] = None,
+        age: Optional[int] = None,
+        gender: Optional[Gender] = None,
+        drug: str = "",
+        dose: str = "",
+        duration_of_treatment: Optional[DurationOfTreatment] = None,
+        adverse_effects: List[AdverseEffect] = [],
+        sentiment: str = "",
     ) -> None:
         self.title = title
         self.content = content
-        self.analysis = analysis
         self.post_id = hashlib.sha256(f"{title}{content}".encode()).hexdigest()
 
+        self.age = age
+        self.gender = gender
+        self.drug = drug
+        self.dose = dose
+        self.duration_of_treatment = duration_of_treatment
+        self.adverse_effects = adverse_effects
+        self.sentiment = sentiment
+
+
     def __str__(self) -> str:
-        if self.analysis:
-            return f"Title: {self.title[:20]}\nContent: {self.content[:20]}\nPostID: {self.post_id}\nAnalysis: {self.analysis.__dict__}"
-        else:
-            return f"Title: {self.title[:20]}\nContent: {self.content[:20]}\nPostID: {self.post_id}"
+        return f"Title: {self.title[:20]}\nContent: {self.content[:20]}\nPostID: {self.post_id}"

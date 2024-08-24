@@ -10,19 +10,13 @@ from mongodb import mongodb_client
 
 plt.style.use("science")
 
-DATA_FILE_PATH = "analyzed_posts.csv"
-
-
-def read_posts_from_csv_file(file_path: str) -> pd.DataFrame:
-    return pd.read_csv(file_path)
-
 
 def read_posts_from_mongodb() -> pd.DataFrame:
-    analyses = []
+    posts = []
     for post in mongodb_client.online_drug_surveillance_db.analyzed_posts.find():
-        analyses.append(post["analysis"])
+        posts.append(post)
 
-    return pd.DataFrame(analyses)
+    return pd.DataFrame(posts)
 
 
 def create_demographics_by_sentiment_table(data: pd.DataFrame) -> None:
