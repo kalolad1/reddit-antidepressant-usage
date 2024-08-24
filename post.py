@@ -75,6 +75,8 @@ class Post:
         self,
         title: str,
         content: str,
+        subreddit: str,
+        timestamp: int,
         age: Optional[int] = None,
         gender: Optional[Gender] = None,
         drug: str = "",
@@ -85,6 +87,8 @@ class Post:
     ) -> None:
         self.title = title
         self.content = content
+        self.subreddit = subreddit
+        self.timestamp = timestamp
         self.post_id = hashlib.sha256(f"{title}{content}".encode()).hexdigest()
 
         self.age = age

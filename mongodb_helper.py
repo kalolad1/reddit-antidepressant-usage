@@ -16,6 +16,8 @@ def write_post_to_mongodb(post: Post) -> None:
         {
             "title": post.title,
             "content": post.content,
+            "subreddit": post.subreddit,
+            "timestamp": post.timestamp,
             "post_id": post.post_id,
             "age": post.age,
             "gender": post.gender.value if post.gender is not None else "",

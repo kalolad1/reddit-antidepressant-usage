@@ -43,9 +43,12 @@ class RedditPostCollector:
                     post_time = datetime.datetime.fromtimestamp(
                         submission.created_utc, datetime.UTC
                     )
+                    
                     if start_time <= post_time <= end_time:
                         new_post = Post(
                             title=submission.title,
                             content=submission.selftext,
+                            subreddit=subreddit,
+                            timestamp=submission.created_utc,
                         )
                         yield new_post

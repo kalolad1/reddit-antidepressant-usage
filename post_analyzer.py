@@ -88,14 +88,3 @@ def analyze_post(post: Post) -> None:
     post.duration_of_treatment = post_characteristics["duration_of_treatment"]
     post.adverse_effects = post_characteristics["adverse_effects"]
     post.sentiment = sentiment
-
-
-def read_posts_from_mongodb() -> List[Post]:
-    posts = []
-    for post in mongodb_client.online_drug_surveillance_db.filtered_posts.find():
-        new_post = Post(
-            title=post["title"],
-            content=post["content"],
-        )
-        posts.append(new_post)
-    return posts
