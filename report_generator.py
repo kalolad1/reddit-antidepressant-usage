@@ -6,14 +6,14 @@ import tableone
 import matplotlib.pyplot as plt  # type: ignore[import-not-found]
 import scienceplots  # type: ignore[import-not-found]
 
-from mongodb import mongodb_client
+from mongodb_helper import mongodb_client
 
 plt.style.use("science")
 
 
 def read_posts_from_mongodb() -> pd.DataFrame:
     posts = []
-    for post in mongodb_client.online_drug_surveillance_db.analyzed_posts.find():
+    for post in mongodb_client.online_drug_surveillance_db.posts.find():
         posts.append(post)
 
     return pd.DataFrame(posts)
@@ -230,11 +230,51 @@ def create_sentiment_analysis_comparative_bar_graph(data: pd.DataFrame) -> None:
     plt.savefig("figures/sentiment_analysis_comparative_bar_graph_top_10.png", dpi=300)
 
 
+def create_subreddit_average_sentiment_graph(data: pd.DataFrame) -> None:
+    # Create a graph that shows the relative frequency of sentiment values for each subreddit
+    grouped_data = data.groupby(["subreddit", "sentiment"]).size().unstack()
+
+    # Calculate the relative percentage of each sentiment for each subreddit
+    grouped_data["total"] = grouped_data.sum(axis=1)
+    grouped_data["positive_percentage"] = (
+        grouped_data["positive"] / grouped_data["total"] * 100
+    )
+    # If there are no neutral posts, set the percentage to 0
+    try:
+        grouped_data["neutral_percentage"] = (
+            grouped_data["neutral"] / grouped_data["total"] * 100
+        )
+    except KeyError:
+        grouped_data["neutral"] = 0
+        grouped_data["neutral_percentage"] = 0
+
+    grouped_data["negative_percentage"] = (
+        grouped_data["negative"] / grouped_data["total"] * 100
+    )
+
+    # Sort the data by most positive to least positive
+    sorted_data = grouped_data.sort_values(by="positive_percentage", ascending=False)
+
+    # Create the graph
+    plt.figure(figsize=(14, 8))
+    sorted_data[
+        ["negative_percentage", "neutral_percentage", "positive_percentage"]
+    ].plot(kind="bar", stacked=True, color=["red", "orange", "green"])
+    plt.title("Percentage of user sentiments by subreddit", fontsize=10)
+    plt.xlabel("")
+    plt.xticks(rotation=45, ha="right")
+    plt.ylabel("Percentage")
+    legend_labels = ["Negative", "Neutral", "Positive"]
+    plt.legend(legend_labels, loc="center left", bbox_to_anchor=(1, 0.5))
+    plt.savefig("figures/subreddit_average_sentiment_graph.png", dpi=300)
+
+
 def main():
     # data = read_posts_from_csv_file(DATA_FILE_PATH)
-    # data = read_posts_from_mongodb()
+    data = read_posts_from_mongodb()
 
-    create_drug_perscription_relative_frequency_pie_chart()
+    create_subreddit_average_sentiment_graph(data)
+    # create_drug_perscription_relative_frequency_pie_chart()
     # create_per_drug_adverse_effect_frequency_graph(data)
     # create_drug_adverse_effect_count_table(data)
     # create_demographics_by_sentiment_table(data)

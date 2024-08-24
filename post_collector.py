@@ -16,7 +16,7 @@ class RedditPostCollector:
     def __init__(
         self,
         subreddits: List[str] = ["mentalhealth", "depression"],
-        subreddit_post_limit: int = 2,
+        subreddit_post_limit: int = 4,
         days: int = 1000,
         keywords: List[str] = drugs.get_antidepressant_search_keywords()[:4],
         client_id: str = CLIENT_ID,
