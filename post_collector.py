@@ -9,16 +9,17 @@ from post import Post
 CLIENT_ID = "2PNKUUZ7U8J435ZZF_f19g"
 CLIENT_SECRET = "lwnfx-95lv-kQpj39vioHC_Al9_pUw"
 USER_AGENT = "test_user_agent"
+SUBREDDITS = ["mentalhealth", "depression", "anxiety"]
 
 
 class RedditPostCollector:
 
     def __init__(
         self,
-        subreddits: List[str] = ["mentalhealth", "depression"],
-        subreddit_post_limit: int = 4,
+        subreddits: List[str] = SUBREDDITS,
+        subreddit_post_limit: int = 100,
         days: int = 1000,
-        keywords: List[str] = drugs.get_antidepressant_search_keywords()[:4],
+        keywords: List[str] = drugs.get_antidepressant_search_keywords(),
         client_id: str = CLIENT_ID,
         client_secret: str = CLIENT_SECRET,
         user_agent: str = USER_AGENT,

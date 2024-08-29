@@ -1,5 +1,6 @@
 import logging
 
+from post import Post
 import post_analyzer
 import post_collector
 import post_filterer
@@ -10,28 +11,37 @@ logger = logging.getLogger("main logger")
 logger.setLevel(logging.INFO)
 
 
+def process_post(post: Post) -> bool:
+    # Filters, analyzes, and writes a post to MongoDB
+    logger.info(f"Collecting Post: {post.title.rstrip()}")
+    if mongodb_helper.post_exists_in_mongodb(post):
+        logger.info(f"Post already exists in MongoDB. Skipping.\n")
+        return False
+
+    if post_filterer.filter_post(post):
+        post_analyzer.analyze_post(post)
+        logger.info(f"Post analyzed.")
+
+        mongodb_helper.write_post_to_mongodb(post)
+        logger.info(f"Post written to MongoDB.")
+        
+    return True
+
+
 def main() -> None:
+    num_posts_skip_ahead = 3000
     collector = post_collector.RedditPostCollector()
     analyzed_posts = 0
     for post in collector.collect_posts():
-        logger.info(f"Collecting Post: {post.title.rstrip()}")
-
-        if mongodb_helper.post_exists_in_mongodb(post):
-            logger.info(
-                f"Post already exists in MongoDB. Skipping.\n"
-            )
+        if num_posts_skip_ahead > 0:
+            num_posts_skip_ahead -= 1
             continue
-
-        if post_filterer.filter_post(post):
-            post_analyzer.analyze_post(post)
-            logger.info(f"Post analyzed.")
-
-            mongodb_helper.write_post_to_mongodb(post)
-            logger.info(
-                f"Post written to MongoDB."
-            )
-            logger.info(f"Total posts analyzed so far: {analyzed_posts}\n")
-            analyzed_posts += 1
+        try:
+            if process_post(post):
+                analyzed_posts += 1
+                logger.info(f"Total posts analyzed so far: {analyzed_posts}\n")
+        except Exception as e:
+            logger.error(f"Error: {e}")
 
 
 if __name__ == "__main__":

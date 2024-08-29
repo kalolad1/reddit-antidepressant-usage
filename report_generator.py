@@ -104,6 +104,7 @@ def create_drug_adverse_effect_count_table(data: pd.DataFrame) -> None:
     sorted_data = grouped_data.sort_values(by="adverse_effect_count", ascending=False)
 
     # Create the table
+    plt.figure(figsize=(8, 5))
     table = plt.table(
         cellText=sorted_data.values,
         colLabels=["Drug", "Average Adverse Effects per Post"],
@@ -123,14 +124,16 @@ def create_per_drug_adverse_effect_frequency_graph(data: pd.DataFrame) -> None:
     # Count the number of posts (records) for each drug
     drug_counts = df["drug"].value_counts()
 
-    # Select the top 10 drugs by post count
-    top_10_drugs = drug_counts.nlargest(10).index
+    N = 5
 
-    # Filter the DataFrame to include only the top 10 drugs
-    df_top_10 = df[df["drug"].isin(top_10_drugs)]
+    # Select the top N drugs by post count
+    top_N_drugs = drug_counts.nlargest(N).index
+
+    # Filter the DataFrame to include only the top N drugs
+    df_top_N = df[df["drug"].isin(top_N_drugs)]
 
     # Explode the list of adverse effects to create one row per effect
-    df_exploded = df_top_10.explode("adverse_effects")
+    df_exploded = df_top_N.explode("adverse_effects")
 
     # Group the data by Drug and Adverse Effects
     grouped = (
@@ -151,7 +154,8 @@ def create_per_drug_adverse_effect_frequency_graph(data: pd.DataFrame) -> None:
         plt.ylabel("Percentage Frequency")
         plt.xticks(rotation=45, ha="right")
         plt.tight_layout()
-        plt.show()
+        plt.savefig(f"figures/drug_adverse_effect_frequency/{drug}.png", dpi=300)
+        plt.close()
 
 
 def create_drug_perscription_relative_frequency_pie_chart() -> None:
@@ -274,12 +278,12 @@ def main():
     data = read_posts_from_mongodb()
 
     create_subreddit_average_sentiment_graph(data)
-    # create_drug_perscription_relative_frequency_pie_chart()
-    # create_per_drug_adverse_effect_frequency_graph(data)
-    # create_drug_adverse_effect_count_table(data)
-    # create_demographics_by_sentiment_table(data)
-    # create_demographics_by_drug_table(data)
-    # create_sentiment_analysis_comparative_bar_graph(data)
+    create_drug_perscription_relative_frequency_pie_chart()
+    create_per_drug_adverse_effect_frequency_graph(data)
+    create_drug_adverse_effect_count_table(data)
+    create_demographics_by_sentiment_table(data)
+    create_demographics_by_drug_table(data)
+    create_sentiment_analysis_comparative_bar_graph(data)
 
 
 if __name__ == "__main__":
