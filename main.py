@@ -24,13 +24,21 @@ def process_post(post: Post) -> bool:
 
         mongodb_helper.write_post_to_mongodb(post)
         logger.info(f"Post written to MongoDB.")
-        
+
     return True
 
 
 def main() -> None:
-    num_posts_skip_ahead = 3000
-    collector = post_collector.RedditPostCollector()
+    SUBREDDIT_POST_LIMIT = 100000
+    
+    # 5 years
+    DAYS = 1825
+    collector = post_collector.RedditPostCollector(
+        subreddit_post_limit=SUBREDDIT_POST_LIMIT, days=DAYS
+    )
+
+    # Skip the first N posts because they might have already been read
+    num_posts_skip_ahead = 6000
     analyzed_posts = 0
     for post in collector.collect_posts():
         if num_posts_skip_ahead > 0:
