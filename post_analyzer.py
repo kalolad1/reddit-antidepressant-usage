@@ -3,7 +3,7 @@ import enum
 import warnings
 from typing import Any, Dict, List
 
-import dotenv  # type: ignore[import-not-found]
+import dotenv
 import openai
 import pydantic
 import transformers  # type: ignore[import-not-found]
@@ -12,7 +12,7 @@ from post import Post, AdverseEffect, DurationOfTreatment, Gender
 from mongodb_helper import mongodb_client
 
 dotenv.load_dotenv()
-client = openai.OpenAI(  # type: ignore[attr-defined]
+client = openai.OpenAI(
     api_key="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",
 )
 with warnings.catch_warnings():
@@ -61,7 +61,7 @@ Lowercase all text.
 
 
 def get_post_characteristics(post: Post) -> Any:
-    completion = client.beta.chat.completions.parse(
+    completion = client.beta.chat.completions.parse( # type: ignore[attr-defined]
         model="gpt-4o-mini",
         messages=[
             {

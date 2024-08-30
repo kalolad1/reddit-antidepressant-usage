@@ -31,14 +31,14 @@ def process_post(post: Post) -> bool:
 def main() -> None:
     SUBREDDIT_POST_LIMIT = 100000
     
-    # 5 years
-    DAYS = 1825
+    # 10 years
+    DAYS = 3650
     collector = post_collector.RedditPostCollector(
         subreddit_post_limit=SUBREDDIT_POST_LIMIT, days=DAYS
     )
 
     # Skip the first N posts because they might have already been read
-    num_posts_skip_ahead = 6000
+    num_posts_skip_ahead = 13000
     analyzed_posts = 0
     for post in collector.collect_posts():
         if num_posts_skip_ahead > 0:

@@ -11,7 +11,7 @@ from mongodb_helper import mongodb_client
 from post import Post
 
 # Set up OpenAI API key
-client = openai.OpenAI(  # type: ignore[attr-defined]
+client = openai.OpenAI(
     api_key="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",
 )
 
@@ -27,7 +27,9 @@ def filter_post(post: Post) -> bool:
             },
         ],
     )
-    result = completion.choices[0].message.content.strip().lower()
+    result = ""
+    if completion.choices[0].message.content:
+        result = completion.choices[0].message.content.strip().lower()
     return "yes" in result
 
 
@@ -44,7 +46,9 @@ def filter_posts(posts: List[Post]) -> List[Post]:
                 },
             ],
         )
-        result = completion.choices[0].message.content.strip().lower()
+        result = ""
+        if completion.choices[0].message.content:
+            result = completion.choices[0].message.content.strip().lower()
         if "yes" in result:
             filtered_posts.append(post)
     return filtered_posts

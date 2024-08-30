@@ -1,6 +1,6 @@
 import os
 
-import dotenv  # type: ignore[import-not-found]
+import dotenv
 import pymongo  # type: ignore[import-not-found]
 
 from post import Post
