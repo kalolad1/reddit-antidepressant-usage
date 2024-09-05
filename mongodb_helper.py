@@ -12,7 +12,7 @@ mongodb_client = pymongo.MongoClient(os.getenv("MONGODB_URI"))
 
 def write_post_to_mongodb(post: Post) -> None:
 
-    mongodb_client.online_drug_surveillance_db.posts.insert_one(
+    mongodb_client.online_drug_surveillance_db.posts_v2.insert_one(
         {
             "title": post.title,
             "content": post.content,
@@ -21,14 +21,15 @@ def write_post_to_mongodb(post: Post) -> None:
             "post_id": post.post_id,
             "age": post.age,
             "gender": post.gender.value if post.gender is not None else "",
-            "drug": post.drug,
-            "dose": post.dose,
-            "duration_of_treatment": (
-                post.duration_of_treatment.value
-                if post.duration_of_treatment is not None
-                else ""
-            ),
-            "adverse_effects": [effect.value for effect in post.adverse_effects],
+            "drugs_used": [
+                {
+                    "name": drug.name,
+                    "adverse_effects": [adverse_effect.value for adverse_effect in drug.adverse_effects],
+                    "duration_of_treatment": drug.duration_of_treatment.value,
+                    "dose": drug.dose,
+                }
+                for drug in post.drugs_used
+            ],
             "sentiment": post.sentiment,
         }
     )
@@ -36,7 +37,7 @@ def write_post_to_mongodb(post: Post) -> None:
 
 def post_exists_in_mongodb(post: Post) -> bool:
     return (
-        mongodb_client.online_drug_surveillance_db.posts.find_one(
+        mongodb_client.online_drug_surveillance_db.posts_v2.find_one(
             {"post_id": post.post_id}
         )
         is not None

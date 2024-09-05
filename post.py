@@ -69,6 +69,20 @@ class Gender(enum.Enum):
     FEMALE = "female"
 
 
+class DrugUsed:
+    def __init__(
+        self,
+        name: str,
+        adverse_effects: List[AdverseEffect],
+        duration_of_treatment: DurationOfTreatment,
+        dose: str,
+    ) -> None:
+        self.name = name
+        self.adverse_effects = adverse_effects
+        self.duration_of_treatment = duration_of_treatment
+        self.dose = dose
+
+
 class Post:
 
     def __init__(
@@ -79,10 +93,7 @@ class Post:
         timestamp: int,
         age: Optional[int] = None,
         gender: Optional[Gender] = None,
-        drug: str = "",
-        dose: str = "",
-        duration_of_treatment: Optional[DurationOfTreatment] = None,
-        adverse_effects: List[AdverseEffect] = [],
+        drugs_used: List[DrugUsed] = [],
         sentiment: str = "",
     ) -> None:
         self.title = title
@@ -93,12 +104,8 @@ class Post:
 
         self.age = age
         self.gender = gender
-        self.drug = drug
-        self.dose = dose
-        self.duration_of_treatment = duration_of_treatment
-        self.adverse_effects = adverse_effects
+        self.drugs_used = drugs_used
         self.sentiment = sentiment
-
 
     def __str__(self) -> str:
         return f"Title: {self.title[:20]}\nContent: {self.content[:20]}\nPostID: {self.post_id}"

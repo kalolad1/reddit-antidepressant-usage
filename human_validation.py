@@ -120,22 +120,26 @@ def generate_human_validation_documents() -> None:
         c.drawString(
             40,
             y_position,
-            "5) Drug name (if multiple present, chose one): ____________________",
+            "5) Drug name (if multiple present, chose the most important one): ____________________",
         )
-        y_position -= 20
-
-        c.drawString(40, y_position, "6) Duration of treatment (please circle one):")
-        y_position -= 20
-        c.drawString(40, y_position, "  less than one month  |  one to six months  ")
-        y_position -= 20
-        c.drawString(40, y_position, "  six to twelve months  |  more than one year  ")
         y_position -= 20
 
         c.drawString(
             40,
             y_position,
-            "7) Medication side effects: ________________________________________________________",
+            "6) Medication side effects (of chosen drug): ________________________________________________________",
         )
+        y_position -= 20
+
+        c.drawString(
+            40,
+            y_position,
+            "7) Duration of treatment of chosen drug (please circle one):",
+        )
+        y_position -= 20
+        c.drawString(40, y_position, "  less than one month  |  one to six months  ")
+        y_position -= 20
+        c.drawString(40, y_position, "  six to twelve months  |  more than one year  ")
         y_position -= 20
 
         y_position -= 40
