@@ -11,7 +11,7 @@ from mongodb_helper import mongodb_client
 def select_human_validation_set() -> None:
     # Connect to MongoDB
     db = mongodb_client.online_drug_surveillance_db
-    posts_collection = db.posts
+    posts_collection = db.posts_v2
     validation_collection = db.human_validation_set
 
     # Retrieve all post IDs
@@ -91,7 +91,7 @@ def generate_human_validation_documents() -> None:
         )
         y_position -= 20
 
-        if y_position < 300:
+        if y_position < 400:
             c.showPage()
             y_position = height - 40
             c.setFont("Helvetica", 12)
@@ -116,32 +116,35 @@ def generate_human_validation_documents() -> None:
             "4) Is the post about a personal experience with an antidepressant? (please circle):  Yes  |  No  ",
         )
         y_position -= 20
+        
+        for index in range(3):
+            c.drawString(
+                40,
+                y_position,
+                f"{5 + index}) Drug #{index + 1}: ____________________",
+            )
+            y_position -= 20
 
-        c.drawString(
-            40,
-            y_position,
-            "5) Drug name (if multiple present, chose the most important one): ____________________",
-        )
-        y_position -= 20
+            c.drawString(
+                40,
+                y_position,
+                "Medication side effects: ________________________________________________________",
+            )
+            y_position -= 20
 
-        c.drawString(
-            40,
-            y_position,
-            "6) Medication side effects (of chosen drug): ________________________________________________________",
-        )
-        y_position -= 20
+            c.drawString(
+                40,
+                y_position,
+                "Duration of treatment of drug (please circle one):",
+            )
+            y_position -= 20
+            c.drawString(40, y_position, "  less than one month  |  one to six months  ")
+            y_position -= 20
+            c.drawString(40, y_position, "  six to twelve months  |  more than one year  ")
+            y_position -= 20
 
-        c.drawString(
-            40,
-            y_position,
-            "7) Duration of treatment of chosen drug (please circle one):",
-        )
-        y_position -= 20
-        c.drawString(40, y_position, "  less than one month  |  one to six months  ")
-        y_position -= 20
-        c.drawString(40, y_position, "  six to twelve months  |  more than one year  ")
-        y_position -= 20
-
+            y_position -= 20
+        
         y_position -= 40
 
     # Save the PDF document
@@ -149,6 +152,7 @@ def generate_human_validation_documents() -> None:
 
 
 def main() -> None:
+    # select_human_validation_set()
     generate_human_validation_documents()
 
 
