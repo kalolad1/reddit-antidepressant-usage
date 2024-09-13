@@ -1,3 +1,4 @@
+from collections import defaultdict
 from typing import Any
 
 import pandas as pd
@@ -6,90 +7,19 @@ import tableone
 import matplotlib.pyplot as plt  # type: ignore[import-not-found]
 import scienceplots  # type: ignore[import-not-found]
 
+import drugs
 from mongodb_helper import mongodb_client
+
 
 plt.style.use("science")
 
 
 def read_posts_from_mongodb() -> pd.DataFrame:
     posts = []
-    for post in mongodb_client.online_drug_surveillance_db.posts.find():
+    for post in mongodb_client.online_drug_surveillance_db.posts_v2.find():
         posts.append(post)
 
     return pd.DataFrame(posts)
-
-
-def create_demographics_by_sentiment_table(data: pd.DataFrame) -> None:
-    data = data.copy()
-
-    columns = ["age", "gender", "duration_of_treatment"]
-    groupby = "sentiment"
-    categorical = ["duration_of_treatment", "gender"]
-    continuous = ["age"]
-    nonnormal = ["age"]
-    rename = {
-        "age": "Age",
-        "gender": "Gender",
-        "duration_of_treatment": "Duration of Treatment",
-        "sentiment": "Sentiment",
-    }
-
-    # Titlecase the sentiment column for better readability
-    data["sentiment"] = data["sentiment"].str.title()
-    for column in columns:
-        if column == "age":
-            continue
-        data[column] = data[column].str.title()
-
-    table = tableone.TableOne(
-        data,
-        columns=columns,
-        categorical=categorical,
-        continuous=continuous,
-        groupby=groupby,
-        nonnormal=nonnormal,
-        rename=rename,
-        pval=False,
-    )
-
-    table.to_html("figures/demographics_by_sentiment.html")
-
-
-def create_demographics_by_drug_table(data: pd.DataFrame) -> Any:
-    data = data.copy()
-
-    columns = ["age", "gender", "duration_of_treatment", "sentiment"]
-    groupby = "drug"
-    categorical = ["duration_of_treatment", "gender", "sentiment"]
-    continuous = ["age"]
-    nonnormal = ["age"]
-    rename = {
-        "age": "Age",
-        "gender": "Gender",
-        "duration_of_treatment": "Duration of Treatment",
-        "sentiment": "Sentiment",
-        "drug": "Drug",
-    }
-
-    # Titlecase for better readability
-    data["drug"] = data["drug"].str.title()
-    for column in columns:
-        if column == "age":
-            continue
-        data[column] = data[column].str.title()
-
-    table = tableone.TableOne(
-        data,
-        columns=columns,
-        categorical=categorical,
-        continuous=continuous,
-        groupby=groupby,
-        nonnormal=nonnormal,
-        rename=rename,
-        pval=False,
-    )
-
-    table.to_html("figures/demographics_by_drug.html")
 
 
 def create_drug_adverse_effect_count_table(data: pd.DataFrame) -> None:
@@ -115,82 +45,6 @@ def create_drug_adverse_effect_count_table(data: pd.DataFrame) -> None:
 
     # Save the table as an image
     plt.savefig("figures/drug_adverse_effect_count_table.png", dpi=300)
-
-
-def create_per_drug_adverse_effect_frequency_graph(data: pd.DataFrame) -> None:
-    # Group the data by drug and adverse effect
-    df = data[["drug", "adverse_effects"]].copy()
-
-    # Count the number of posts (records) for each drug
-    drug_counts = df["drug"].value_counts()
-
-    N = 5
-
-    # Select the top N drugs by post count
-    top_N_drugs = drug_counts.nlargest(N).index
-
-    # Filter the DataFrame to include only the top N drugs
-    df_top_N = df[df["drug"].isin(top_N_drugs)]
-
-    # Explode the list of adverse effects to create one row per effect
-    df_exploded = df_top_N.explode("adverse_effects")
-
-    # Group the data by Drug and Adverse Effects
-    grouped = (
-        df_exploded.groupby(["drug", "adverse_effects"]).size().unstack(fill_value=0)
-    )
-
-    # Calculate percentage frequency
-    percentage_grouped = grouped.div(grouped.sum(axis=1), axis=0) * 100
-
-    # Plot a separate bar graph for each drug
-    for drug in percentage_grouped.index:
-        effect_percentages = percentage_grouped.loc[drug].sort_values(ascending=False)
-
-        plt.figure(figsize=(8, 5))
-        effect_percentages.plot(kind="bar", color="skyblue")
-        plt.title(f"Percentage of Adverse Effects for {drug} (Ranked)")
-        plt.xlabel("Adverse Effect")
-        plt.ylabel("Percentage Frequency")
-        plt.xticks(rotation=45, ha="right")
-        plt.tight_layout()
-        plt.savefig(f"figures/drug_adverse_effect_frequency/{drug}.png", dpi=300)
-        plt.close()
-
-
-def create_drug_perscription_relative_frequency_pie_chart() -> None:
-    """
-    Source of data: https://clincalc.com/DrugStats/TC/SsriAntidepressants
-
-    """
-    # Data for the top most prescribed antidepressants, number of prescriptions in
-    # the US 2022
-    top_prescribed_antidepressants = {
-        "sertraline": 39900000,
-        "escitalopram": 30800000,
-        "fluoxetine": 24000000,
-        "citalopram": 15000000,
-        "duloxetine": 13500000,
-        "bupropion": 10500000,
-        "venlafaxine": 9100000,
-        "paroxetine": 7100000,
-        "mirtazapine": 5400000,
-        "amitriptyline": 4300000,
-        "other": 80400000,
-    }
-
-    # Create a pie chart using matplotlib
-    plt.figure(figsize=(8, 8))
-    plt.pie(
-        top_prescribed_antidepressants.values(),
-        labels=top_prescribed_antidepressants.keys(),
-        autopct="%1.1f%%",
-        startangle=140,
-    )
-    plt.title(
-        "Relative Frequency of Prescriptions for the Top 20 Antidepressants in the US During 2022"
-    )
-    plt.savefig("figures/drug_prescription_relative_frequency_pie_chart.png", dpi=300)
 
 
 def create_sentiment_analysis_comparative_bar_graph(data: pd.DataFrame) -> None:
@@ -234,6 +88,53 @@ def create_sentiment_analysis_comparative_bar_graph(data: pd.DataFrame) -> None:
     plt.savefig("figures/sentiment_analysis_comparative_bar_graph_top_10.png", dpi=300)
 
 
+def create_per_drug_adverse_effect_frequency_graph(data: pd.DataFrame) -> None:
+    mentioned_antidepressants = defaultdict(int)
+    for post_mention in data["drugs_used"]:
+        for drug in post_mention:
+            mentioned_antidepressants[drug["name"].lower()] += 1
+
+    # Get the top 10 objects in dict with highest int value
+    top_mentioned_antidepressants = dict(
+        sorted(
+            mentioned_antidepressants.items(), key=lambda item: item[1], reverse=True
+        )[:10]
+    )
+
+    adverse_effects_by_drug = {
+        key: defaultdict(int) for key in top_mentioned_antidepressants.keys()
+    }
+
+    for post_mention in data["drugs_used"]:
+        for drug in post_mention:
+            drug_name = drug["name"].lower()
+            if drug_name in top_mentioned_antidepressants:
+                for effect in drug["adverse_effects"]:
+                    adverse_effects_by_drug[drug_name][effect] += 1
+
+    # For each key, get the top 10 adverse effects
+    top_adverse_effects_by_drug = {
+        drug: dict(sorted(effects.items(), key=lambda item: item[1], reverse=True)[:10])
+        for drug, effects in adverse_effects_by_drug.items()
+    }
+    # Create a bar graph for each drug showing the relative percentage of adverse effects over the total times the drug was mentioned in a post
+    for drug, effects in top_adverse_effects_by_drug.items():
+        total_mentions = top_mentioned_antidepressants[drug]
+        effect_percentages = {
+            effect: (count / total_mentions) * 100 for effect, count in effects.items()
+        }
+
+        plt.figure(figsize=(8, 5))
+        plt.bar(effect_percentages.keys(), effect_percentages.values(), color="skyblue")
+        plt.title(f"Frequency of Adverse Effects for {drug} (Top 10)")
+        plt.xlabel("Adverse Effect")
+        plt.ylabel("Percentage Frequency")
+        plt.xticks(rotation=45, ha="right")
+        plt.tight_layout()
+        plt.savefig(f"figures/drug_adverse_effect_frequency/{drug}.png", dpi=300)
+        plt.close()
+
+
 def create_subreddit_average_sentiment_graph(data: pd.DataFrame) -> None:
     # Create a graph that shows the relative frequency of sentiment values for each subreddit
     grouped_data = data.groupby(["subreddit", "sentiment"]).size().unstack()
@@ -273,17 +174,129 @@ def create_subreddit_average_sentiment_graph(data: pd.DataFrame) -> None:
     plt.savefig("figures/subreddit_average_sentiment_graph.png", dpi=300)
 
 
+def create_antidepressant_prescription_vs_mention_frequency_pie_charts(data) -> None:
+    """
+    Side by side comparison of prescription frequency pie chart
+    and post mention frequency in data set.
+    """
+    # Source of data: https://clincalc.com/DrugStats/TC/SsriAntidepressants
+    top_prescribed_antidepressants = {
+        "sertraline": 39900000,
+        "escitalopram": 30800000,
+        "fluoxetine": 24000000,
+        "citalopram": 15000000,
+        "duloxetine": 13500000,
+        "bupropion": 10500000,
+        "venlafaxine": 9100000,
+        "paroxetine": 7100000,
+        "mirtazapine": 5400000,
+        "amitriptyline": 4300000,
+        "other": 80400000,
+    }
+
+    mentioned_antidepressants = defaultdict(int)
+    for post_mention in data["drugs_used"]:
+        for drug in post_mention:
+            mentioned_antidepressants[drug["name"].lower()] += 1
+
+    # Remove from mentioned antidepressants all keys that are not contained within the drug list
+    known_antidepressants = [
+        drug.generic_name for drug in drugs.create_list_of_antidepressants()
+    ]
+    mentioned_antidepressants = {
+        k: v for k, v in mentioned_antidepressants.items() if k in known_antidepressants
+    }
+
+    # Get the top 10 objects in dict with highest int value
+    top_mentioned_antidepressants = dict(
+        sorted(
+            mentioned_antidepressants.items(), key=lambda item: item[1], reverse=True
+        )[:10]
+    )
+    other_mentions = sum(mentioned_antidepressants.values()) - sum(
+        top_mentioned_antidepressants.values()
+    )
+    top_mentioned_antidepressants["other"] = other_mentions
+
+    plt.figure(figsize=(12, 6))
+
+    # Pie chart for top prescribed antidepressants
+    plt.subplot(1, 2, 1)
+    plt.pie(
+        top_prescribed_antidepressants.values(),
+        labels=top_prescribed_antidepressants.keys(),
+        autopct="%1.1f%%",
+        startangle=140,
+    )
+    plt.title(
+        "Relative Frequency of Prescriptions for the Top 10 Antidepressants in the US During 2022"
+    )
+
+    # Pie chart for top mentioned antidepressants
+    plt.subplot(1, 2, 2)
+    plt.pie(
+        top_mentioned_antidepressants.values(),
+        labels=top_mentioned_antidepressants.keys(),
+        autopct="%1.1f%%",
+        startangle=140,
+    )
+    plt.title("Relative Frequency of the Top 10 Antidepressants Mentioned in Posts")
+
+    plt.tight_layout()
+    plt.savefig(
+        "figures/antidepressant_prescription_vs_mention_frequency_pie_charts.png",
+        dpi=300,
+    )
+
+
+def create_demographics_by_sentiment_table(data: pd.DataFrame) -> None:
+    data = data.copy()
+    # Set age to not a number if it is 0
+    data["age"] = data["age"].replace(0, pd.NA)
+
+    columns = ["age", "gender"]
+    groupby = "sentiment"
+    categorical = ["gender"]
+    continuous = ["age"]
+    nonnormal = ["age"]
+    rename = {
+        "age": "Age",
+        "gender": "Gender",
+        "sentiment": "Sentiment",
+    }
+
+    # Titlecase the sentiment column for better readability
+    data["sentiment"] = data["sentiment"].str.title()
+    for column in columns:
+        if column == "age":
+            continue
+        data[column] = data[column].str.title()
+
+    table = tableone.TableOne(
+        data,
+        columns=columns,
+        categorical=categorical,
+        continuous=continuous,
+        groupby=groupby,
+        nonnormal=nonnormal,
+        rename=rename,
+        pval=False,
+    )
+
+    table.to_html("figures/demographics_by_sentiment.html")
+
+
 def main():
     # data = read_posts_from_csv_file(DATA_FILE_PATH)
     data = read_posts_from_mongodb()
 
-    create_subreddit_average_sentiment_graph(data)
-    create_drug_perscription_relative_frequency_pie_chart()
-    create_per_drug_adverse_effect_frequency_graph(data)
-    create_drug_adverse_effect_count_table(data)
-    create_demographics_by_sentiment_table(data)
-    create_demographics_by_drug_table(data)
-    create_sentiment_analysis_comparative_bar_graph(data)
+    # create_demographics_by_sentiment_table(data)
+    # create_antidepressant_prescription_vs_mention_frequency_pie_charts(data)
+    # create_subreddit_average_sentiment_graph(data)
+    # create_per_drug_adverse_effect_frequency_graph(data)
+    
+    # create_drug_adverse_effect_count_table(data)
+    # create_sentiment_analysis_comparative_bar_graph(data)
 
 
 if __name__ == "__main__":
