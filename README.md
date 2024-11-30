@@ -16,7 +16,7 @@ This project stems from personal experiences and curiosity about the therapeutic
 - Analyze patient sentiment.
 - Explore adverse effects mentioned in user posts.
 
-For full details and analysis, refer to [my write-up on Substack](#).
+For full details and analysis, refer to [my write-up on Substack](https://open.substack.com/pub/darshankalola/p/what-reddit-reveals-about-the-reality?r=8owya&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true).
 
 ## Features
 - **Data Collection**: Gathers posts from subreddits such as `r/mentalhealth`, `r/depression`, and `r/anxiety` using Reddit's API.
