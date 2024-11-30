@@ -67,6 +67,7 @@ class DurationOfTreatment(enum.Enum):
 class Gender(enum.Enum):
     MALE = "male"
     FEMALE = "female"
+    UNKNOWN = "unknown"
 
 
 class DrugUsed:

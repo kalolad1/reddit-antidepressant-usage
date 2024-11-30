@@ -1,7 +1,8 @@
 import csv
 import enum
-import warnings
+import os
 from typing import Any, Dict, List
+import warnings
 
 import dotenv
 import openai
@@ -14,7 +15,7 @@ from mongodb_helper import mongodb_client
 
 dotenv.load_dotenv()
 client = openai.OpenAI(
-    api_key="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",
+    api_key=os.getenv("OPENAI_API_KEY"),
 )
 with warnings.catch_warnings():
     warnings.simplefilter("ignore", category=FutureWarning)
@@ -79,6 +80,37 @@ def get_post_characteristics(post: Post) -> Any:
 
     extraction = completion.choices[0].message
     return vars(extraction.parsed)
+
+
+GENDER_EXTRACTION_PROMPT = """
+You are an expert at structured data extraction. 
+
+You will be given unstructured text from a reddit post about 
+someones experience with antidepressants and should extract the gender of the person
+who created the post. Only extract the gender if the post contains explicit information
+that informs you of the gender. Otherwise, return 'unknown'.
+"""
+
+
+class GenderExtractionSchema(pydantic.BaseModel):
+    gender: Gender
+
+
+def extract_gender_from_post(post_content: str) -> Gender:
+    completion = client.beta.chat.completions.parse(  # type: ignore[attr-defined]
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": GENDER_EXTRACTION_PROMPT,
+            },
+            {"role": "user", "content": post_content},
+        ],
+        response_format=GenderExtractionSchema,
+    )
+    if completion.choices[0].message.parsed:
+        return completion.choices[0].message.parsed.gender
+    return Gender.UNKNOWN
 
 
 def analyze_post(post: Post) -> None:

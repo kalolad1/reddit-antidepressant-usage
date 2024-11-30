@@ -12,7 +12,7 @@ from post import Post
 
 # Set up OpenAI API key
 client = openai.OpenAI(
-    api_key="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",
+    api_key=os.getenv("OPENAI_API_KEY"),
 )
 
 

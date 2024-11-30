@@ -363,7 +363,6 @@ def create_demographics_by_sentiment_table(data: pd.DataFrame) -> None:
 
 
 def main():
-    # data = read_posts_from_csv_file(DATA_FILE_PATH)
     data = read_posts_from_mongodb()
 
     create_demographics_by_sentiment_table(data)

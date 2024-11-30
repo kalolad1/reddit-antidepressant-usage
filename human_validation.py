@@ -1,3 +1,8 @@
+""" 
+This module chooses a subset of posts for human validation
+and generates a PDF document that can be printed and filled out by hand.
+"""
+
 import random
 
 from reportlab.lib.pagesizes import letter  # type: ignore[import-not-found]
@@ -116,7 +121,7 @@ def generate_human_validation_documents() -> None:
             "4) Is the post about a personal experience with an antidepressant? (please circle):  Yes  |  No  ",
         )
         y_position -= 20
-        
+
         for index in range(3):
             c.drawString(
                 40,
@@ -138,13 +143,17 @@ def generate_human_validation_documents() -> None:
                 "Duration of treatment of drug (please circle one):",
             )
             y_position -= 20
-            c.drawString(40, y_position, "  less than one month  |  one to six months  ")
+            c.drawString(
+                40, y_position, "  less than one month  |  one to six months  "
+            )
             y_position -= 20
-            c.drawString(40, y_position, "  six to twelve months  |  more than one year  ")
+            c.drawString(
+                40, y_position, "  six to twelve months  |  more than one year  "
+            )
             y_position -= 20
 
             y_position -= 20
-        
+
         y_position -= 40
 
     # Save the PDF document
@@ -152,7 +161,7 @@ def generate_human_validation_documents() -> None:
 
 
 def main() -> None:
-    # select_human_validation_set()
+    select_human_validation_set()
     generate_human_validation_documents()
 
 
